@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zidhan</title>
+    <meta name="description" content="Portfolio of Zidhan, an independent Cybersecurity Researcher & Ethical Hacker specializing in vulnerability assessment, web application penetration testing, and responsible disclosures.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CSS stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background grid effect -->
+    <div class="cyber-grid"></div>
+    <div class="scanlines"></div>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-accent">&lt;</span>ZIDHAN<span class="logo-accent">.SEC //&gt;</span>
+                <span class="status-dot pulsing"></span>
+            </a>
+            
+            <nav class="nav-menu">
+                <a href="#hero" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#contact" class="btn btn-outline btn-sm">Request Audit</a>
+                <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section section-padding">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <div class="badge-cyber">
+                        <span class="badge-ping"></span>
+                        <span class="badge-text">STATUS: ACTIVE FOR DISCLOSURES</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Securing the Web, <br>
+                        <span class="text-gradient">One Vulnerability</span> <br>
+                        at a Time.
+                    </h1>
+                    <p class="hero-subtitle">
+                        Hello, I'm <strong>Zidhan</strong>. A 19-year-old Cybersecurity Researcher &amp; Ethical Hacker. I hunt for web vulnerabilities, secure applications, and help platforms protect user data.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">
+                            <span>View Disclosures</span>
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                        <a href="#contact" class="btn btn-outline">
+                            <span>Get in Touch</span>
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-val text-gradient">2+</span>
+                            <span class="stat-lbl">Clients Satisfied</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-val text-gradient">100%</span>
+                            <span class="stat-lbl">Responsible Disclosure</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-val text-gradient">3+</span>
+                            <span class="stat-lbl">Core CVE Reports</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulated Terminal Widget -->
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="term-btn red"></span>
+                            <span class="term-btn yellow"></span>
+                            <span class="term-btn green"></span>
+                        </div>
+                        <div class="terminal-title">guest@zidhan-sec:~</div>
+                        <div class="terminal-status">SECURE SHH</div>
+                    </div>
+                    <div class="terminal-body" id="terminal-body">
+                        <div class="terminal-line text-muted">Initializing Zidhan security shell connection...</div>
+                        <div class="terminal-line text-muted">Establishing secure handshakes... OK</div>
+                        <div class="terminal-line text-success">[System initialized successfully]</div>
+                        <div class="terminal-line">Welcome to Zidhan's InfoSec Console.</div>
+                        <div class="terminal-line text-muted">Type <span class="text-accent">'help'</span> for a list of available commands.</div>
+                        <br>
+                        <div id="terminal-output"></div>
+                        <div class="terminal-input-line">
+                            <span class="terminal-prompt">guest@zidhan-sec:~$</span>
+                            <input type="text" id="terminal-input" autocomplete="off" autofocus spellcheck="false">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="about-section section-padding border-top-glow">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title"><span class="title-number">01.</span> About Me</h2>
+                    <p class="section-desc">Who I am and how I stepped into the world of cyber security.</p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-bio">
+                        <p class="lead-text">
+                            I am a passionate 19-year-old Cybersecurity enthusiast based in Calicut, Kerala. 
+                        </p>
+                        <p>
+                            My journey began differently. In 2025, I finished my plus-two education focusing on Commerce (CA). However, I soon realized that my true calling was in computer networks, systems, and digital defense. Driven by this realization, I decided to pivot and dive headfirst into the security space.
+                        </p>
+                        <p>
+                            I enrolled in a specialized ethical hacking program at the <strong>Avodha Institute in Calicut</strong>. From October 2025 to April 2026, I immersed myself in vulnerability analysis, network defense, penetration testing tools, and ethical hacking methodologies, graduating with a Diploma.
+                        </p>
+                        <p>
+                            Since then, I've worked as an independent security researcher and freelancer, helping clients secure their applications through responsible disclosures and in-depth vulnerability testing.
+                        </p>
+                    </div>
+
+                    <div class="about-timeline-card">
+                        <h3 class="card-title-glow">Career Roadmap</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-date">2025</div>
+                                <h4 class="timeline-title">Plus-Two CA Commerce Graduate</h4>
+                                <p class="timeline-text">Completed secondary education and discovered a passion for ethical hacking and networking.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-date">Oct 2025 - Apr 2026</div>
+                                <h4 class="timeline-title">Ethical Hacking Diploma</h4>
+                                <p class="timeline-text">Studied hands-on offensive security, web application security, and network defenses at Avodha Institute, Calicut.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-date">Apr 2026 - Present</div>
+                                <h4 class="timeline-title">Independent Freelance Audits</h4>
+                                <p class="timeline-text">Discovered vulnerabilities in live e-commerce networks, executed secure disclosures, and satisfied multiple clients.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills and Expertise Section -->
+        <section id="skills" class="skills-section section-padding border-top-glow bg-darker">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title"><span class="title-number">02.</span> Skills &amp; Expertise</h2>
+                    <p class="section-desc">My technical arsenal for finding bugs and securing assets.</p>
+                </div>
+                <div class="skills-grid">
+                    <!-- Skill Group 1 -->
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <h3 class="skill-card-title">Penetration Testing</h3>
+                        <p class="skill-card-text">Conducting structural web application testing to identify exploits, flaws, and security logic bypasses.</p>
+                        <div class="skill-badges">
+                            <span class="skill-badge">OWASP Top 10</span>
+                            <span class="skill-badge">API Sec</span>
+                            <span class="skill-badge">Auth Bypass</span>
+                        </div>
+                    </div>
+                    <!-- Skill Group 2 -->
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg>
+                        </div>
+                        <h3 class="skill-card-title">Vulnerability Assessment</h3>
+                        <p class="skill-card-text">Leveraging automated utilities alongside meticulous manual inspection to discover and trace system vulnerabilities.</p>
+                        <div class="skill-badges">
+                            <span class="skill-badge">Nessus</span>
+                            <span class="skill-badge">Nmap Scanning</span>
+                            <span class="skill-badge">Vulnerability Reports</span>
+                        </div>
+                    </div>
+                    <!-- Skill Group 3 -->
+                    <div class="skill-card">
+                        <div class="skill-icon-wrap">
+                            <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                        </div>
+                        <h3 class="skill-card-title">Ethical Hacking Tools</h3>
+                        <p class="skill-card-text">Proficient with industry-standard frameworks to analyze network traffic and execute controlled payload testing.</p>
+                        <div class="skill-badges">
+                            <span class="skill-badge">Burp Suite</span>
+                            <span class="skill-badge">Wireshark</span>
+                            <span class="skill-badge">Metasploit</span>
+                            <span class="skill-badge">Linux / Bash</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Metric Meters -->
+                <div class="skills-metrics-wrap">
+                    <h3 class="metrics-title">Tool Proficiency &amp; Methodologies</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-info">
+                                <span class="metric-name">Web App Vulnerability Analysis</span>
+                                <span class="metric-pct">90%</span>
+                            </div>
+                            <div class="metric-bar-bg">
+                                <div class="metric-bar-fill" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-info">
+                                <span class="metric-name">Manual Testing &amp; Exploitation (Burp Suite)</span>
+                                <span class="metric-pct">85%</span>
+                            </div>
+                            <div class="metric-bar-bg">
+                                <div class="metric-bar-fill" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-info">
+                                <span class="metric-name">Network Traffic Analysis (Wireshark, Nmap)</span>
+                                <span class="metric-pct">80%</span>
+                            </div>
+                            <div class="metric-bar-bg">
+                                <div class="metric-bar-fill" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-info">
+                                <span class="metric-name">Security Reporting &amp; Disclosure Writeups</span>
+                                <span class="metric-pct">95%</span>
+                            </div>
+                            <div class="metric-bar-bg">
+                                <div class="metric-bar-fill" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services-section section-padding border-top-glow">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title"><span class="title-number">03.</span> Services</h2>
+                    <p class="section-desc">Professional cybersecurity solutions I provide to clients.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        </div>
+                        <h3>Web App Audits</h3>
+                        <p>Comprehensive checks against common attack vectors like SQL injection, cross-site scripting, authentication flaws, and API leaks.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                        </div>
+                        <h3>Vulnerability Assessment</h3>
+                        <p>Detailed analysis of your infrastructure or website setup to detect configuration bugs, exposed paths, and software version leaks.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        </div>
+                        <h3>Responsible Disclosure Reporting</h3>
+                        <p>Clear, highly detailed proof-of-concept (PoC) security reports containing step-by-step reproduction and critical fixing recommendations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects & Research Section -->
+        <section id="projects" class="projects-section section-padding border-top-glow bg-darker">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title"><span class="title-number">04.</span> Projects &amp; Research</h2>
+                    <p class="section-desc">Independent research and vulnerabilities responsibly disclosed on live systems.</p>
+                </div>
+
+                <div class="projects-featured">
+                    <!-- Featured Project 1 -->
+                    <div class="project-featured-card" style="margin-bottom: 2.5rem;">
+                        <div class="project-tag">FEATURED DISCLOSURE // FREELANCE WORK #01</div>
+                        <h3 class="project-featured-title">E-Commerce Platform Vulnerability Assessment</h3>
+                        <p class="project-featured-desc">
+                            Conducted a non-intrusive security audit on an active e-commerce application. Responsibly reported multiple vulnerabilities to help secure client networks and safeguard active transaction databases.
+                        </p>
+                        
+                        <!-- Vulnerabilities Accordion -->
+                        <div class="vulns-list">
+                            <div class="vuln-item critical">
+                                <div class="vuln-header">
+                                    <span class="severity-badge">CRITICAL</span>
+                                    <span class="vuln-name">Django Debug Mode Enabled</span>
+                                    <span class="vuln-toggle">+</span>
+                                </div>
+                                <div class="vuln-details">
+                                    <p>Exposed internal code structures, environment keys, technical settings, database queries, and raw local variables. Exposed system paths could easily facilitate server takeovers.</p>
+                                </div>
+                            </div>
+                            <div class="vuln-item high">
+                                <div class="vuln-header">
+                                    <span class="severity-badge">HIGH</span>
+                                    <span class="vuln-name">No Rate Limiting on Admin Panel</span>
+                                    <span class="vuln-toggle">+</span>
+                                </div>
+                                <div class="vuln-details">
+                                    <p>The administrative login portal was completely vulnerable to rapid automated login attempts (Brute Force attacks), making default password attacks highly effective.</p>
+                                </div>
+                            </div>
+                            <div class="vuln-item medium">
+                                <div class="vuln-header">
+                                    <span class="severity-badge">MEDIUM</span>
+                                    <span class="vuln-name">Server Software Information Disclosure</span>
+                                    <span class="vuln-toggle">+</span>
+                                </div>
+                                <div class="vuln-details">
+                                    <p>Server headers leaked exact software components and server versions, allowing malicious actors to target matching CVE vulnerabilities.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-footer">
+                            <div class="project-tools">
+                                <span>Django Audit</span>
+                                <span>Vulnerability Assessment</span>
+                                <span>Auth Security</span>
+                            </div>
+                            <a href="https://www.linkedin.com/in/muhammad-zidhan-508b98357" target="_blank" rel="noopener noreferrer" class="project-link">
+                                <span>Verify on LinkedIn</span>
+                                <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Featured Project 2 -->
+                    <div class="project-featured-card">
+                        <div class="project-tag">FEATURED DISCLOSURE // FREELANCE WORK #02</div>
+                        <h3 class="project-featured-title">Storefront Application Clickjacking Security Audit</h3>
+                        <p class="project-featured-desc">
+                            Identified and verified a clickjacking (UI redirection) flaw during security research labs on an active storefront web server. Verified the bypass and responsibly coordinated a patch submission with the client.
+                        </p>
+                        
+                        <!-- Vulnerabilities Accordion -->
+                        <div class="vulns-list">
+                            <div class="vuln-item medium">
+                                <div class="vuln-header">
+                                    <span class="severity-badge">MEDIUM</span>
+                                    <span class="vuln-name">Missing Frame Isolation Headers (Clickjacking)</span>
+                                    <span class="vuln-toggle">+</span>
+                                </div>
+                                <div class="vuln-details">
+                                    <p>The web server failed to enforce defensive boundaries, completely lacking legacy X-Frame-Options and modern Content-Security-Policy (CSP) frame-ancestors tokens. This allowed the authentication page to load inside unauthorized external frames.</p>
+                                </div>
+                            </div>
+                            <div class="vuln-item low">
+                                <div class="vuln-header">
+                                    <span class="severity-badge">LOW</span>
+                                    <span class="vuln-name">Proof of Concept Frame Pipeline</span>
+                                    <span class="vuln-toggle">+</span>
+                                </div>
+                                <div class="vuln-details">
+                                    <p>Confirmed exposure by building a lightweight HTML frame wrapper that loads the user login fields inside a controlled, mock attacker-facing layer without triggering browser exceptions.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-footer">
+                            <div class="project-tools">
+                                <span>Clickjacking Audit</span>
+                                <span>X-Frame-Options</span>
+                                <span>Content Security Policy</span>
+                            </div>
+                            <a href="https://www.linkedin.com/in/muhammad-zidhan-508b98357" target="_blank" rel="noopener noreferrer" class="project-link">
+                                <span>Verify on LinkedIn</span>
+                                <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secondary Projects Grid -->
+                <div class="projects-grid" style="margin-top: 2.5rem;">
+                    <div class="project-card">
+                        <div class="project-card-header">
+                            <svg class="project-folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                            <span class="project-year">2026</span>
+                        </div>
+                        <h4 class="project-card-title">Port Scanner &amp; Banner Grabber</h4>
+                        <p class="project-card-text">A custom Python script leveraging socket programming to quickly map active hosts, discover open ports, and securely grab banner headers for service recognition.</p>
+                        <div class="project-card-tags">
+                            <span>Python</span>
+                            <span>Sockets</span>
+                            <span>Network Scanning</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-card-header">
+                            <svg class="project-folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                            <span class="project-year">2025</span>
+                        </div>
+                        <h4 class="project-card-title">Automated Subdomain Finder</h4>
+                        <p class="project-card-text">A shell tool designed to query public certificates, DNS entries, and wordlists to map the attack surface of target domains for pentesting audits.</p>
+                        <div class="project-card-tags">
+                            <span>Bash</span>
+                            <span>DNS Query</span>
+                            <span>Info Gathering</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section section-padding border-top-glow">
+            <div class="container contact-container">
+                <div class="contact-info">
+                    <div class="badge-cyber">
+                        <span class="badge-ping"></span>
+                        <span class="badge-text">SECURE PORTAL OPEN</span>
+                    </div>
+                    <h2 class="contact-title">Let's Secure Your Assets.</h2>
+                    <p class="contact-text">
+                        Whether you are looking for an initial vulnerability check, a web application security audit, or want to collaborate on security research, feel free to send a message.
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-detail-item">
+                            <div class="detail-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            </div>
+                            <div>
+                                <div class="detail-label">Secure Channel</div>
+                                <a href="mailto:zidhaninfo.sec@gmail.com" class="detail-value">zidhaninfo.sec@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <div class="detail-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            </div>
+                            <div>
+                                <div class="detail-label">Operations Base</div>
+                                <div class="detail-value">Calicut, Kerala, India</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/muhammad-zidhan-508b98357" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="social-icon"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="#" aria-label="GitHub Profile">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="social-icon"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Styled Cyber Contact Form -->
+                <div class="contact-form-card">
+                    <form id="contact-form" class="cyber-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="form-name">Codename / Name</label>
+                                <input type="text" id="form-name" required placeholder="Agent Smith">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="form-email">Sender Address (Email)</label>
+                                <input type="email" id="form-email" required placeholder="name@domain.com">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="form-subject">Subject</label>
+                                <input type="text" id="form-subject" required placeholder="Vulnerability Audit Inquiry">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="form-message">Encrypted Payload (Message)</label>
+                                <textarea id="form-message" rows="5" required placeholder="Describe your systems or inquiry details here..."></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <span>Submit Connection Request</span>
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        </button>
+                        <div id="form-status" class="form-status"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <span class="logo-accent">&lt;</span>ZIDHAN<span class="logo-accent">.SEC //&gt;</span>
+                </div>
+                <p class="footer-desc">Independent Cybersecurity Researcher &amp; Ethical Hacker.</p>
+            </div>
+            <div class="footer-status-pnl">
+                <div class="status-indicator">
+                    <span class="status-dot green"></span>
+                    <span>All client systems protected.</span>
+                </div>
+                <p class="footer-hash">HASH: SHA256: 8f39c2d1b098a5e...f78</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-flex">
+                <p>&copy; 2026 Zidhan. All rights secured.</p>
+                <p class="footer-timestamp">SYS_TIME: <span id="sys-timestamp">2026-06-06 17:08:22</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
