@@ -1408,3 +1408,191 @@ a.detail-value:hover {
     align-items: center;
     gap: 1.25rem;
 }
+
+/* Interactive Cyber Threat Radar Widget */
+.radar-widget-container {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px var(--color-border-glow);
+    overflow: hidden;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.radar-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.radar-screen {
+    position: relative;
+    height: 250px;
+    background-color: #05070c;
+    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radar-sweep {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, rgba(56, 189, 248, 0.15) 0deg, transparent 70deg, transparent 360deg);
+    animation: radar-sweep-anim 5s linear infinite;
+    transform-origin: center center;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes radar-sweep-anim {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.radar-grid-rings {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.radar-ring {
+    position: absolute;
+    border: 1px solid rgba(56, 189, 248, 0.08);
+    border-radius: 50%;
+}
+.ring-1 { width: 80px; height: 80px; }
+.ring-2 { width: 160px; height: 160px; }
+.ring-3 { width: 240px; height: 240px; }
+
+.radar-grid-rings::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(56, 189, 248, 0.06);
+}
+.radar-grid-rings::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background-color: rgba(56, 189, 248, 0.06);
+}
+
+.radar-node {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 5;
+    transform: translate(-50%, -50%);
+    transition: transform var(--transition-fast);
+}
+.radar-node:hover {
+    transform: translate(-50%, -50%) scale(1.4);
+}
+
+.node-critical {
+    background-color: var(--sev-critical);
+    box-shadow: 0 0 10px var(--sev-critical);
+    animation: node-ping-critical 1.8s infinite;
+}
+.node-high {
+    background-color: var(--sev-high);
+    box-shadow: 0 0 10px var(--sev-high);
+    animation: node-ping-high 1.8s infinite;
+}
+.node-medium {
+    background-color: var(--sev-medium);
+    box-shadow: 0 0 10px var(--sev-medium);
+    animation: node-ping-medium 1.8s infinite;
+}
+.node-secure {
+    background-color: var(--color-primary);
+    box-shadow: 0 0 10px var(--color-primary);
+}
+
+@keyframes node-ping-critical {
+    0% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.6); }
+    70% { box-shadow: 0 0 0 8px rgba(244, 63, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0); }
+}
+@keyframes node-ping-high {
+    0% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.6); }
+    70% { box-shadow: 0 0 0 8px rgba(249, 115, 22, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0); }
+}
+@keyframes node-ping-medium {
+    0% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.6); }
+    70% { box-shadow: 0 0 0 8px rgba(234, 179, 8, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0); }
+}
+
+.radar-hud-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(19, 27, 46, 0.85);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 0.6rem 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    min-width: 180px;
+    pointer-events: none;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+.hud-title {
+    color: var(--color-primary);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+}
+.hud-row {
+    margin-bottom: 0.2rem;
+}
+.hud-row:last-child {
+    margin-bottom: 0;
+}
+.hud-label {
+    color: var(--color-text-muted);
+}
+.hud-val {
+    color: var(--color-text-primary);
+}
+
+.radar-console {
+    background-color: var(--bg-darker);
+    padding: 0.85rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--color-text-secondary);
+    height: 110px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+.console-log-line {
+    line-height: 1.4;
+    word-break: break-all;
+}

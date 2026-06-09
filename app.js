@@ -481,4 +481,74 @@ Available commands:
             }
         });
     }
+
+    // ----------------------------------------------------
+    // 10. Cyber Threat Radar Interaction & Logging
+    // ----------------------------------------------------
+    const radarNodes = document.querySelectorAll('.radar-node');
+    const hudHost = document.getElementById('hud-host');
+    const hudIp = document.getElementById('hud-ip');
+    const hudStatus = document.getElementById('hud-status');
+    const radarConsole = document.getElementById('radar-console-log');
+
+    // Hover handler to fetch node stats
+    radarNodes.forEach(node => {
+        node.addEventListener('mouseenter', () => {
+            const host = node.getAttribute('data-host');
+            const ip = node.getAttribute('data-ip');
+            const vuln = node.getAttribute('data-vuln');
+            const sev = node.getAttribute('data-sev');
+            
+            hudHost.textContent = host;
+            hudIp.textContent = ip;
+            hudStatus.textContent = vuln;
+            
+            if (sev === "CRITICAL") {
+                hudStatus.style.color = "#f43f5e";
+            } else if (sev === "HIGH") {
+                hudStatus.style.color = "#f97316";
+            } else if (sev === "MEDIUM") {
+                hudStatus.style.color = "#eab308";
+            } else {
+                hudStatus.style.color = "var(--color-primary)";
+            }
+            
+            addRadarLog(`HUD: Querying metrics for ${host} (${ip})`);
+        });
+    });
+
+    // Logging helper
+    function addRadarLog(message) {
+        if (!radarConsole) return;
+        const line = document.createElement('div');
+        line.className = 'console-log-line';
+        line.textContent = `[+] ${message}`;
+        radarConsole.appendChild(line);
+        radarConsole.scrollTop = radarConsole.scrollHeight;
+        
+        while (radarConsole.children.length > 10) {
+            radarConsole.removeChild(radarConsole.firstChild);
+        }
+    }
+
+    // Automated scanning log loop
+    const logPool = [
+        "Analyzing packet headers on port 443...",
+        "SSL Handshake completed with 10.0.4.22.",
+        "Scan alert: Django stacktrace exposure on 10.0.4.12.",
+        "Re-testing boundary rules for 10.0.4.18...",
+        "Firewall log: Access allowed for host 10.0.4.15.",
+        "Verifying CSRF prevention tokens...",
+        "Querying certificate registers for storefront subnet...",
+        "Network integrity audit: 100% operational.",
+        "Alert: X-Frame-Options missing on 10.0.4.18.",
+        "IDS check: No active intrusions detected."
+    ];
+
+    if (radarConsole) {
+        setInterval(() => {
+            const randomMsg = logPool[Math.floor(Math.random() * logPool.length)];
+            addRadarLog(randomMsg);
+        }, 4000);
+    }
 });
