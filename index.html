@@ -32,6 +32,7 @@
                 <a href="#skills" class="nav-link">Skills</a>
                 <a href="#services" class="nav-link">Services</a>
                 <a href="#projects" class="nav-link">Projects</a>
+                <a href="#scoping" class="nav-link">Scope Audit</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
 
@@ -88,44 +89,44 @@
                     </div>
                 </div>
 
-                <!-- Interactive Threat Radar Scanner Widget -->
-                <div class="radar-widget-container">
-                    <div class="terminal-header">
-                        <div class="terminal-buttons">
-                            <span class="term-btn red"></span>
-                            <span class="term-btn yellow"></span>
-                            <span class="term-btn green"></span>
+                <!-- Professional Security Metrics Dashboard -->
+                <div class="dashboard-widget-container">
+                    <div class="dashboard-header">
+                        <div class="dashboard-controls">
+                            <span class="control-dot"></span>
+                            <span class="control-dot"></span>
+                            <span class="control-dot"></span>
                         </div>
-                        <div class="terminal-title">active_defense_scanner.bin</div>
-                        <div class="terminal-status">LIVE MONITOR</div>
+                        <div class="dashboard-title">Security Audit Monitor v2.1</div>
+                        <span class="dashboard-badge">STANDBY</span>
                     </div>
-                    <div class="radar-body">
-                        <div class="radar-screen">
-                            <div class="radar-sweep"></div>
-                            
-                            <!-- Interactive Scan Nodes -->
-                            <div class="radar-node node-critical" style="top: 25%; left: 35%;" data-host="E-Comm Prod DB" data-ip="10.0.4.12" data-vuln="Django Debug Enabled" data-sev="CRITICAL"></div>
-                            <div class="radar-node node-medium" style="top: 60%; left: 70%;" data-host="Public Web Host" data-ip="10.0.4.15" data-vuln="Server Info Leak" data-sev="MEDIUM"></div>
-                            <div class="radar-node node-high" style="top: 45%; left: 20%;" data-host="Admin Portal" data-ip="10.0.4.18" data-vuln="No Rate Limiting" data-sev="HIGH"></div>
-                            <div class="radar-node node-secure" style="top: 75%; left: 45%;" data-host="API Secure Gate" data-ip="10.0.4.22" data-vuln="None (Secure)" data-sev="SECURE"></div>
-                            
-                            <div class="radar-grid-rings">
-                                <div class="radar-ring ring-1"></div>
-                                <div class="radar-ring ring-2"></div>
-                                <div class="radar-ring ring-3"></div>
+                    <div class="dashboard-body">
+                        <div class="dashboard-stats-grid">
+                            <div class="stat-card">
+                                <span class="stat-num text-gradient">15+</span>
+                                <span class="stat-desc">Security Audits</span>
                             </div>
-                            
-                            <div class="radar-hud-overlay" id="radar-hud">
-                                <div class="hud-title">// SCAN_TARGET_DETAILS //</div>
-                                <div class="hud-row"><span class="hud-label">HOST:</span> <span class="hud-val" id="hud-host">---</span></div>
-                                <div class="hud-row"><span class="hud-label">IP:</span> <span class="hud-val" id="hud-ip">---</span></div>
-                                <div class="hud-row"><span class="hud-label">VULN:</span> <span class="hud-val" id="hud-status">---</span></div>
+                            <div class="stat-card">
+                                <span class="stat-num text-gradient">0</span>
+                                <span class="stat-desc">Active Critical Risks</span>
                             </div>
                         </div>
-                        <div class="radar-console" id="radar-console-log">
-                            <div class="console-log-line">[SYS] Initializing Network Auditing Radar...</div>
-                            <div class="console-log-line">[SYS] Active subnet scan: 10.0.4.0/24...</div>
-                            <div class="console-log-line">[SYS] Hover over target nodes to retrieve metrics...</div>
+                        <div class="dashboard-chart-wrap">
+                            <div class="chart-header">
+                                <span>Threat Exposure Index</span>
+                                <span class="chart-legend">System Secure</span>
+                            </div>
+                            <div class="chart-bars">
+                                <div class="chart-bar-item"><div class="bar-fill" style="height: 25%;"></div><span>Mon</span></div>
+                                <div class="chart-bar-item"><div class="bar-fill" style="height: 12%;"></div><span>Tue</span></div>
+                                <div class="chart-bar-item"><div class="bar-fill" style="height: 8%;"></div><span>Wed</span></div>
+                                <div class="chart-bar-item"><div class="bar-fill" style="height: 5%;"></div><span>Thu</span></div>
+                                <div class="chart-bar-item"><div class="bar-fill" style="height: 2%;"></div><span>Fri</span></div>
+                            </div>
+                        </div>
+                        <div class="dashboard-feed" id="dashboard-feed-log">
+                            <div class="feed-item"><span class="feed-time">10:04:12</span> <span class="feed-msg">Static code analysis completed.</span></div>
+                            <div class="feed-item"><span class="feed-time">09:12:45</span> <span class="feed-msg">Vulnerability assessment verified.</span></div>
                         </div>
                     </div>
                 </div>
@@ -458,6 +459,74 @@
             </div>
         </section>
 
+        <!-- Client Portal / Scope Calculator Section -->
+        <section id="scoping" class="scoping-section section-padding border-top-glow bg-darker">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title"><span class="title-number">05.</span> Scope Your Audit</h2>
+                    <p class="section-desc">Interact with the estimator below to scope your pentesting needs and get an instant quote.</p>
+                </div>
+                
+                <div class="scoping-grid">
+                    <div class="scoping-selector-card">
+                        <h3 class="card-title-glow">Interactive Scoper</h3>
+                        
+                        <div class="scoping-form-group">
+                            <label class="scoping-label">1. Select Audit Target</label>
+                            <div class="scoping-options">
+                                <label class="scoping-option active">
+                                    <input type="radio" name="audit-target" value="webapp" checked>
+                                    <span>Web Application Audit</span>
+                                </label>
+                                <label class="scoping-option">
+                                    <input type="radio" name="audit-target" value="network">
+                                    <span>Network &amp; IP Pentest</span>
+                                </label>
+                                <label class="scoping-option">
+                                    <input type="radio" name="audit-target" value="codereview">
+                                    <span>Source Code Security Audit</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="scoping-form-group">
+                            <label class="scoping-label">2. Select Scale of Assets</label>
+                            <div class="scoping-slider-wrap">
+                                <input type="range" id="scoping-assets-slider" min="1" max="15" value="5" class="scoping-slider">
+                                <div class="slider-labels">
+                                    <span>Small App (1-3 Views)</span>
+                                    <span id="slider-current-val">Medium (5 Views)</span>
+                                    <span>Enterprise (15+ Views)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="scoping-results-card">
+                        <h3 class="card-title-glow">Estimated Overview</h3>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <span class="result-label">Assessed Complexity</span>
+                                <span class="result-val" id="result-complexity">Medium Risk Profile</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Recommended Duration</span>
+                                <span class="result-val" id="result-duration">5 Days</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Estimated Cost Range</span>
+                                <span class="result-val text-gradient" id="result-cost">Free / Freelance Quote</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-block" id="apply-scope-btn">
+                            <span>Apply Scope to Contact Form</span>
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Section -->
         <section id="contact" class="contact-section section-padding border-top-glow">
             <div class="container contact-container">
@@ -577,6 +646,84 @@
             </div>
             <div class="modal-body" id="modal-terminal-body">
                 <!-- Exploit steps are dynamically printed here -->
+            </div>
+        </div>
+    <!-- Client Messaging Widget -->
+    <div class="client-messenger" id="client-messenger">
+        <!-- Launcher Button -->
+        <button class="messenger-launcher" id="messenger-launcher" aria-label="Open message menu">
+            <span class="pulse-ring"></span>
+            <svg class="launcher-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span class="online-dot"></span>
+        </button>
+
+        <!-- Chat Panel -->
+        <div class="messenger-panel" id="messenger-panel">
+            <div class="messenger-header">
+                <div class="messenger-profile">
+                    <span class="status-indicator-dot online"></span>
+                    <div class="messenger-info">
+                        <h4 class="messenger-name">Zidhan (Avodha SEC)</h4>
+                        <span class="messenger-status">Active for Audits</span>
+                    </div>
+                </div>
+                <button class="messenger-close" id="messenger-close" aria-label="Close message menu">&times;</button>
+            </div>
+            
+            <div class="messenger-body" id="messenger-body">
+                <!-- Welcome Dialogue -->
+                <div class="chat-msg system">
+                    <p>SYSTEM: Secure communication channel initialized.</p>
+                </div>
+                <div class="chat-msg recipient">
+                    <p>Hi! I'm Zidhan. Ready to secure your systems? Choose a quick target below or type your payload directly.</p>
+                </div>
+                
+                <!-- Quick Options -->
+                <div class="quick-options-container" id="quick-options-group">
+                    <button class="quick-option-btn" data-type="audit">🔍 Web Audit Scoping</button>
+                    <button class="quick-option-btn" data-type="disclosure">⚠️ Vuln Disclosure</button>
+                    <button class="quick-option-btn" data-type="general">🤝 Hire Me / Freelance</button>
+                </div>
+
+                <!-- Input area -->
+                <div class="messenger-input-area" id="messenger-input-area">
+                    <div class="input-row">
+                        <input type="text" id="messenger-name-input" placeholder="Your Name / Organization" required>
+                    </div>
+                    <div class="input-row">
+                        <textarea id="messenger-text-input" rows="3" placeholder="Type message payload here..." required></textarea>
+                    </div>
+                    <button class="btn btn-primary btn-sm btn-block" id="messenger-submit-btn">
+                        <span>Send Encrypted Message</span>
+                    </button>
+                </div>
+
+                <!-- Transmission Screen (hidden initially) -->
+                <div class="messenger-transmission-area hidden" id="messenger-transmission-area">
+                    <div class="chat-msg system success">
+                        <p>[SUCCESS] Message payload packaged and secured!</p>
+                    </div>
+                    <p class="trans-desc">How would you like to transmit this payload to Zidhan?</p>
+                    <div class="trans-options">
+                        <!-- WhatsApp button -->
+                        <a href="#" target="_blank" class="trans-btn whatsapp" id="trans-whatsapp-btn">
+                            <svg class="trans-icon" viewBox="0 0 24 24" fill="currentColor" style="width:1.1rem; height:1.1rem; vertical-align:middle; margin-right:6px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.703 1.456h.008c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            <span>Transmit via WhatsApp</span>
+                        </a>
+                        <!-- Email button -->
+                        <a href="#" class="trans-btn email" id="trans-email-btn">
+                            <svg class="trans-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:1.1rem; height:1.1rem; vertical-align:middle; margin-right:6px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <span>Transmit via Email</span>
+                        </a>
+                        <!-- Reset/Start over button -->
+                        <button class="btn btn-outline btn-sm" id="trans-reset-btn" style="margin-top: 0.75rem; width: 100%;">
+                            <span>Start New Message</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -273,54 +273,57 @@ Available commands:
     }
 
     // ----------------------------------------------------
-    // 7. Matrix Code Rain Animation
+    // 7. Standard System Dashboard Logging
     // ----------------------------------------------------
-    const canvas = document.getElementById('cyber-rain');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
-        
-        window.addEventListener('resize', () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        });
-        
-        const chars = '0101010101ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@$&%'.split('');
-        const fontSize = 14;
-        const columns = width / fontSize;
-        const drops = [];
-        
-        for (let i = 0; i < columns; i++) {
-            drops[i] = Math.random() * -100;
-        }
-        
-        function drawRain() {
-            ctx.fillStyle = 'rgba(11, 15, 25, 0.05)';
-            ctx.fillRect(0, 0, width, height);
+    const dashboardLog = document.getElementById('dashboard-feed-log');
+    const dashboardStatusBadge = document.querySelector('.dashboard-badge');
+    
+    const sysLogs = [
+        "Network integrity audit: 100% operational.",
+        "Static code analysis completed. 0 vulnerability flags.",
+        "Checked active configurations: X-Frame-Options is SAMEORIGIN.",
+        "Checked Content-Security-Policy: frame-ancestors verified.",
+        "HTTPS connection active. TLS 1.3 handshake verified.",
+        "Vulnerability assessment database updated.",
+        "Security audit completed for Client #2. Status: Patched.",
+        "Monitoring subnets for suspicious traffic... OK.",
+        "IDS check: All firewall rules verified."
+    ];
+
+    if (dashboardLog) {
+        // Randomly append logs to dashboard feed to make it look active
+        setInterval(() => {
+            const now = new Date();
+            const timeStr = now.toTimeString().split(' ')[0];
+            const randomMsg = sysLogs[Math.floor(Math.random() * sysLogs.length)];
             
-            ctx.fillStyle = 'rgba(56, 189, 248, 0.35)';
-            ctx.font = fontSize + 'px monospace';
+            const line = document.createElement('div');
+            line.className = 'feed-item';
+            line.innerHTML = `<span class="feed-time">${timeStr}</span> <span class="feed-msg">${randomMsg}</span>`;
+            dashboardLog.appendChild(line);
             
-            for (let i = 0; i < drops.length; i++) {
-                const text = chars[Math.floor(Math.random() * chars.length)];
-                
-                if (Math.random() > 0.98) {
-                    ctx.fillStyle = '#f8fafc';
-                } else {
-                    ctx.fillStyle = 'rgba(56, 189, 248, 0.35)';
-                }
-                
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                
-                if (drops[i] * fontSize > height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
+            // Keep logs limited
+            while (dashboardLog.children.length > 3) {
+                dashboardLog.removeChild(dashboardLog.firstChild);
             }
-        }
-        setInterval(drawRain, 35);
+            
+            // Randomly toggle badge status
+            if (dashboardStatusBadge) {
+                if (Math.random() > 0.8) {
+                    dashboardStatusBadge.textContent = "SCANNING";
+                    dashboardStatusBadge.style.color = "var(--color-secondary)";
+                    dashboardStatusBadge.style.borderColor = "rgba(99, 102, 241, 0.3)";
+                    dashboardStatusBadge.style.backgroundColor = "rgba(99, 102, 241, 0.05)";
+                    
+                    setTimeout(() => {
+                        dashboardStatusBadge.textContent = "STANDBY";
+                        dashboardStatusBadge.style.color = "var(--color-accent)";
+                        dashboardStatusBadge.style.borderColor = "rgba(16, 185, 129, 0.3)";
+                        dashboardStatusBadge.style.backgroundColor = "rgba(16, 185, 129, 0.05)";
+                    }, 2000);
+                }
+            }
+        }, 5000);
     }
 
     // ----------------------------------------------------
@@ -483,72 +486,226 @@ Available commands:
     }
 
     // ----------------------------------------------------
-    // 10. Cyber Threat Radar Interaction & Logging
+    // 10. Interactive Scope Calculator Portal
     // ----------------------------------------------------
-    const radarNodes = document.querySelectorAll('.radar-node');
-    const hudHost = document.getElementById('hud-host');
-    const hudIp = document.getElementById('hud-ip');
-    const hudStatus = document.getElementById('hud-status');
-    const radarConsole = document.getElementById('radar-console-log');
+    const scoperSlider = document.getElementById('scoping-assets-slider');
+    const scoperTargets = document.getElementsByName('audit-target');
+    const sliderValDisplay = document.getElementById('slider-current-val');
+    const complexityDisplay = document.getElementById('result-complexity');
+    const durationDisplay = document.getElementById('result-duration');
+    const costDisplay = document.getElementById('result-cost');
+    const applyScopeBtn = document.getElementById('apply-scope-btn');
 
-    // Hover handler to fetch node stats
-    radarNodes.forEach(node => {
-        node.addEventListener('mouseenter', () => {
-            const host = node.getAttribute('data-host');
-            const ip = node.getAttribute('data-ip');
-            const vuln = node.getAttribute('data-vuln');
-            const sev = node.getAttribute('data-sev');
+    if (scoperSlider) {
+        function calculateEstimates() {
+            const assetsScale = parseInt(scoperSlider.value);
             
-            hudHost.textContent = host;
-            hudIp.textContent = ip;
-            hudStatus.textContent = vuln;
-            
-            if (sev === "CRITICAL") {
-                hudStatus.style.color = "#f43f5e";
-            } else if (sev === "HIGH") {
-                hudStatus.style.color = "#f97316";
-            } else if (sev === "MEDIUM") {
-                hudStatus.style.color = "#eab308";
-            } else {
-                hudStatus.style.color = "var(--color-primary)";
+            // Get selected audit target value
+            let targetVal = 'webapp';
+            let targetLabel = 'Web Application Audit';
+            scoperTargets.forEach(radio => {
+                if (radio.checked) {
+                    targetVal = radio.value;
+                    targetLabel = radio.parentElement.querySelector('span').textContent;
+                }
+            });
+
+            // Toggle active styling class on label options
+            scoperTargets.forEach(radio => {
+                if (radio.checked) {
+                    radio.parentElement.classList.add('active');
+                } else {
+                    radio.parentElement.classList.remove('active');
+                }
+            });
+
+            // Update scale label indicator
+            let scaleLabel = `${assetsScale} Page Views / Endpoints`;
+            if (targetVal === 'network') {
+                scaleLabel = `${assetsScale} Host IPs / Subnet Nodes`;
+            } else if (targetVal === 'codereview') {
+                scaleLabel = `${assetsScale} Target Modules / Repositories`;
             }
-            
-            addRadarLog(`HUD: Querying metrics for ${host} (${ip})`);
-        });
-    });
+            sliderValDisplay.textContent = scaleLabel;
 
-    // Logging helper
-    function addRadarLog(message) {
-        if (!radarConsole) return;
-        const line = document.createElement('div');
-        line.className = 'console-log-line';
-        line.textContent = `[+] ${message}`;
-        radarConsole.appendChild(line);
-        radarConsole.scrollTop = radarConsole.scrollHeight;
-        
-        while (radarConsole.children.length > 10) {
-            radarConsole.removeChild(radarConsole.firstChild);
+            // Complexity calculation
+            let complexity = "Low Risk Profile";
+            if (assetsScale > 8) {
+                complexity = "High Complexity Framework";
+            } else if (assetsScale > 3) {
+                complexity = "Medium System Structure";
+            }
+            complexityDisplay.textContent = complexity;
+
+            // Duration calculation
+            let baseDays = 3;
+            if (targetVal === 'webapp') baseDays = 5;
+            if (targetVal === 'codereview') baseDays = 4;
+            const finalDays = Math.ceil(baseDays + (assetsScale * 0.4));
+            durationDisplay.textContent = `${finalDays} Days`;
+
+            // Cost calculation (Free/Freelance placeholder for student/freelancer)
+            costDisplay.textContent = "Free Pilot / Custom Quote";
+        }
+
+        // Add event listeners
+        scoperSlider.addEventListener('input', calculateEstimates);
+        scoperTargets.forEach(radio => {
+            radio.addEventListener('change', calculateEstimates);
+        });
+
+        // Initialize estimates
+        calculateEstimates();
+
+        // Apply Scope to Contact Form
+        if (applyScopeBtn) {
+            applyScopeBtn.addEventListener('click', () => {
+                let targetLabel = 'Web Application Audit';
+                scoperTargets.forEach(radio => {
+                    if (radio.checked) {
+                        targetLabel = radio.parentElement.querySelector('span').textContent;
+                    }
+                });
+
+                const assetsScale = scoperSlider.value;
+                const complexity = complexityDisplay.textContent;
+                const duration = durationDisplay.textContent;
+
+                const formSubject = document.getElementById('form-subject');
+                const formMessage = document.getElementById('form-message');
+
+                if (formSubject && formMessage) {
+                    // Populate fields
+                    formSubject.value = `Inquiry: ${targetLabel}`;
+                    formMessage.value = `Hello Zidhan,\n\nI scoped out my project requirements using your interactive estimator:\n\n- Audit Target: ${targetLabel}\n- Scale of Assets: ${assetsScale}\n- System Complexity: ${complexity}\n- Estimated Duration: ${duration}\n\nPlease let me know your availability to discuss this audit!`;
+                    
+                    // Smooth scroll to contact section
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                        contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    
+                    // Highlight contact message box focus
+                    setTimeout(() => {
+                        const nameField = document.getElementById('form-name');
+                        if (nameField) nameField.focus();
+                        
+                        // Alert feedback
+                        const originalBtnText = applyScopeBtn.innerHTML;
+                        applyScopeBtn.innerHTML = "<span>Scope Applied to Form!</span>";
+                        setTimeout(() => {
+                            applyScopeBtn.innerHTML = originalBtnText;
+                        }, 2500);
+                    }, 800);
+                }
+            });
         }
     }
 
-    // Automated scanning log loop
-    const logPool = [
-        "Analyzing packet headers on port 443...",
-        "SSL Handshake completed with 10.0.4.22.",
-        "Scan alert: Django stacktrace exposure on 10.0.4.12.",
-        "Re-testing boundary rules for 10.0.4.18...",
-        "Firewall log: Access allowed for host 10.0.4.15.",
-        "Verifying CSRF prevention tokens...",
-        "Querying certificate registers for storefront subnet...",
-        "Network integrity audit: 100% operational.",
-        "Alert: X-Frame-Options missing on 10.0.4.18.",
-        "IDS check: No active intrusions detected."
-    ];
+    // ----------------------------------------------------
+    // 11. Client Floating Messenger Logic
+    // ----------------------------------------------------
+    const messengerLauncher = document.getElementById('messenger-launcher');
+    const messengerPanel = document.getElementById('messenger-panel');
+    const messengerClose = document.getElementById('messenger-close');
+    const quickOptionBtns = document.querySelectorAll('.quick-option-btn');
+    const messengerNameInput = document.getElementById('messenger-name-input');
+    const messengerTextInput = document.getElementById('messenger-text-input');
+    const messengerSubmitBtn = document.getElementById('messenger-submit-btn');
+    const messengerInputArea = document.getElementById('messenger-input-area');
+    const messengerTransmissionArea = document.getElementById('messenger-transmission-area');
+    const transWhatsappBtn = document.getElementById('trans-whatsapp-btn');
+    const transEmailBtn = document.getElementById('trans-email-btn');
+    const transResetBtn = document.getElementById('trans-reset-btn');
 
-    if (radarConsole) {
-        setInterval(() => {
-            const randomMsg = logPool[Math.floor(Math.random() * logPool.length)];
-            addRadarLog(randomMsg);
-        }, 4000);
+    // Toggle panel
+    if (messengerLauncher && messengerPanel) {
+        messengerLauncher.addEventListener('click', () => {
+            messengerPanel.classList.toggle('active');
+            
+            // Remove pulse indicator once opened
+            const pulseRing = messengerLauncher.querySelector('.pulse-ring');
+            if (pulseRing) {
+                pulseRing.style.display = 'none';
+            }
+        });
+    }
+
+    if (messengerClose && messengerPanel) {
+        messengerClose.addEventListener('click', () => {
+            messengerPanel.classList.remove('active');
+        });
+    }
+
+    // Quick option templates
+    const messageTemplates = {
+        audit: "Hi Zidhan, I would like to scope a Web Application security audit for my platform. Please share your availability.",
+        disclosure: "Hello Zidhan, I'm contacting you regarding a potential vulnerability disclosure coordination or security research query.",
+        general: "Hi Zidhan, I am interested in hiring you for freelance cybersecurity consulting or security testing services."
+    };
+
+    quickOptionBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const type = btn.getAttribute('data-type');
+            if (messageTemplates[type] && messengerTextInput) {
+                messengerTextInput.value = messageTemplates[type];
+                messengerTextInput.focus();
+            }
+        });
+    });
+
+    // Package payload and show transmission options
+    if (messengerSubmitBtn && messengerTextInput && messengerNameInput) {
+        messengerSubmitBtn.addEventListener('click', () => {
+            const name = messengerNameInput.value.trim();
+            const text = messengerTextInput.value.trim();
+
+            if (!name || !text) {
+                // Focus on empty fields
+                if (!name) messengerNameInput.focus();
+                else if (!text) messengerTextInput.focus();
+                return;
+            }
+
+            // Change button state
+            const originalBtnText = messengerSubmitBtn.innerHTML;
+            messengerSubmitBtn.disabled = true;
+            messengerSubmitBtn.innerHTML = "<span>Encrypting Payload...</span>";
+
+            setTimeout(() => {
+                // Hide input area, show transmission
+                if (messengerInputArea && messengerTransmissionArea) {
+                    messengerInputArea.classList.add('hidden');
+                    messengerTransmissionArea.classList.remove('hidden');
+
+                    // Pre-fill WhatsApp and Email links
+                    const subject = encodeURIComponent("Security Audit Inquiry - " + name);
+                    const formattedMessage = `Hello Zidhan,\n\nMy name is ${name}.\n\nMessage Payload:\n${text}\n\n[Sent via Secure Portfolio Widget]`;
+                    const escapedBody = encodeURIComponent(formattedMessage);
+                    
+                    // WhatsApp URL (replace 919999999999 with the real number if needed)
+                    // We'll use 919999999999 as standard placeholder
+                    const waNumber = "919999999999"; 
+                    transWhatsappBtn.href = `https://api.whatsapp.com/send?phone=${waNumber}&text=${escapedBody}`;
+                    
+                    // Email Mailto link
+                    transEmailBtn.href = `mailto:zidhaninfo.sec@gmail.com?subject=${subject}&body=${escapedBody}`;
+                }
+
+                // Restore submit btn for next reset
+                messengerSubmitBtn.disabled = false;
+                messengerSubmitBtn.innerHTML = originalBtnText;
+            }, 1000);
+        });
+    }
+
+    // Reset messaging workflow
+    if (transResetBtn && messengerInputArea && messengerTransmissionArea) {
+        transResetBtn.addEventListener('click', () => {
+            messengerNameInput.value = '';
+            messengerTextInput.value = '';
+            messengerTransmissionArea.classList.add('hidden');
+            messengerInputArea.classList.remove('hidden');
+        });
     }
 });
