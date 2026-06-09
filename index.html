@@ -365,28 +365,35 @@
 
                 <!-- Styled Contact Form -->
                 <div class="contact-form-card">
+                    <div class="contact-form-tabs">
+                        <button type="button" class="form-tab active" id="tab-audit-inquiry">Detailed Inquiry</button>
+                        <button type="button" class="form-tab" id="tab-quick-note">Quick Web Note</button>
+                    </div>
                     <form id="contact-form" class="cyber-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="form-name">Full Name / Organization</label>
-                                <input type="text" id="form-name" required placeholder="John Doe / Acme Corp">
+                        <!-- Group details so they can be hidden dynamically -->
+                        <div id="contact-detailed-fields">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="form-name">Full Name / Organization</label>
+                                    <input type="text" id="form-name" required placeholder="John Doe / Acme Corp">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="form-email">Business Email Address</label>
+                                    <input type="email" id="form-email" required placeholder="john@company.com">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="form-subject">Subject</label>
+                                    <input type="text" id="form-subject" required placeholder="Vulnerability Audit Inquiry">
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="form-email">Business Email Address</label>
-                                <input type="email" id="form-email" required placeholder="john@company.com">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="form-subject">Subject</label>
-                                <input type="text" id="form-subject" required placeholder="Vulnerability Audit Inquiry">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="form-message">Project Details / Message</label>
+                                <label for="form-message" id="message-field-label">Project Details / Message</label>
                                 <textarea id="form-message" rows="5" required placeholder="Describe your systems, tech stack, or inquiry details here..."></textarea>
                             </div>
                         </div>
@@ -487,10 +494,10 @@
                 <!-- Input area -->
                 <div class="messenger-input-area" id="messenger-input-area">
                     <div class="input-row">
-                        <input type="text" id="messenger-name-input" placeholder="Your Name / Organization" required>
+                        <input type="text" id="messenger-name-input" placeholder="Your Name / Organization (Optional)">
                     </div>
                     <div class="input-row">
-                        <textarea id="messenger-text-input" rows="3" placeholder="Type message payload here..." required></textarea>
+                        <textarea id="messenger-text-input" rows="3" placeholder="Type message here..." required></textarea>
                     </div>
                     <button class="btn btn-primary btn-sm btn-block" id="messenger-submit-btn">
                         <span>Send Message</span>
@@ -500,9 +507,9 @@
                 <!-- Transmission Screen (hidden initially) -->
                 <div class="messenger-transmission-area hidden" id="messenger-transmission-area">
                     <div class="chat-msg system success">
-                        <p>[SUCCESS] Message successfully packaged.</p>
+                        <p>[SUCCESS] Message saved to Admin Panel.</p>
                     </div>
-                    <p class="trans-desc">How would you like to transmit this message to Zidhan?</p>
+                    <p class="trans-desc">Your message has been received! You can also optionally forward it via WhatsApp or Email below for an instant response.</p>
                     <div class="trans-options">
                         <!-- WhatsApp button -->
                         <a href="#" target="_blank" class="trans-btn whatsapp" id="trans-whatsapp-btn">

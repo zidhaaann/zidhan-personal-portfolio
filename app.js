@@ -224,7 +224,40 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // 4. Contact Form Submission Dispatcher
+        // 4. Contact Form Tabs & Submission Dispatcher
+        const tabAuditInquiry = document.getElementById('tab-audit-inquiry');
+        const tabQuickNote = document.getElementById('tab-quick-note');
+        const detailedFields = document.getElementById('contact-detailed-fields');
+        const messageFieldLabel = document.getElementById('message-field-label');
+        const formNameInput = document.getElementById('form-name');
+        const formEmailInput = document.getElementById('form-email');
+        const formSubjectInput = document.getElementById('form-subject');
+        const formMessageInput = document.getElementById('form-message');
+
+        if (tabAuditInquiry && tabQuickNote && detailedFields) {
+            tabAuditInquiry.addEventListener('click', () => {
+                tabAuditInquiry.classList.add('active');
+                tabQuickNote.classList.remove('active');
+                detailedFields.style.display = 'block';
+                if (formNameInput) formNameInput.setAttribute('required', 'true');
+                if (formEmailInput) formEmailInput.setAttribute('required', 'true');
+                if (formSubjectInput) formSubjectInput.setAttribute('required', 'true');
+                if (messageFieldLabel) messageFieldLabel.textContent = 'Project Details / Message';
+                if (formMessageInput) formMessageInput.setAttribute('placeholder', 'Describe your systems, tech stack, or inquiry details here...');
+            });
+
+            tabQuickNote.addEventListener('click', () => {
+                tabQuickNote.classList.add('active');
+                tabAuditInquiry.classList.remove('active');
+                detailedFields.style.display = 'none';
+                if (formNameInput) formNameInput.removeAttribute('required');
+                if (formEmailInput) formEmailInput.removeAttribute('required');
+                if (formSubjectInput) formSubjectInput.removeAttribute('required');
+                if (messageFieldLabel) messageFieldLabel.textContent = 'Write Your Message';
+                if (formMessageInput) formMessageInput.setAttribute('placeholder', 'Type your message here... (No name or email required)');
+            });
+        }
+
         const contactForm = document.getElementById('contact-form');
         const formStatus = document.getElementById('form-status');
 
@@ -236,10 +269,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const originalBtnText = submitBtn.innerHTML;
                 submitBtn.disabled = true;
 
-                const name = document.getElementById('form-name').value;
-                const email = document.getElementById('form-email').value;
-                const subject = document.getElementById('form-subject').value;
-                const message = document.getElementById('form-message').value;
+                const isQuickTab = tabQuickNote && tabQuickNote.classList.contains('active');
+                const name = isQuickTab ? 'Web Visitor (Anonymous)' : (formNameInput ? formNameInput.value.trim() : 'Web Visitor');
+                const email = isQuickTab ? 'N/A' : (formEmailInput ? formEmailInput.value.trim() : 'N/A');
+                const subject = isQuickTab ? 'Quick Web Note' : (formSubjectInput ? formSubjectInput.value.trim() : 'General Inquiry');
+                const message = formMessageInput ? formMessageInput.value : '';
 
                 formStatus.className = 'form-status sending';
                 formStatus.innerHTML = '[System] Initializing secure socket connection...';
@@ -264,9 +298,20 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         setTimeout(() => {
                             formStatus.className = 'form-status success';
-                            formStatus.innerHTML = `[SUCCESS] Message dispatched successfully. Thank you for your inquiry, ${name}.`;
+                            formStatus.innerHTML = isQuickTab 
+                                ? `[SUCCESS] Message sent anonymously to ZidhanSec Admin Panel!` 
+                                : `[SUCCESS] Message dispatched successfully. Thank you for your inquiry, ${name}.`;
                             
                             contactForm.reset();
+                            
+                            // Reset state if it was in quick tab mode
+                            if (isQuickTab) {
+                                detailedFields.style.display = 'none';
+                                if (formNameInput) formNameInput.removeAttribute('required');
+                                if (formEmailInput) formEmailInput.removeAttribute('required');
+                                if (formSubjectInput) formSubjectInput.removeAttribute('required');
+                            }
+                            
                             submitBtn.disabled = false;
                             submitBtn.innerHTML = originalBtnText;
 
@@ -584,12 +629,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (messengerSubmitBtn && messengerTextInput && messengerNameInput) {
             messengerSubmitBtn.addEventListener('click', () => {
-                const name = messengerNameInput.value.trim();
+                const name = messengerNameInput.value.trim() || 'Web Visitor (Anonymous)';
                 const text = messengerTextInput.value.trim();
 
-                if (!name || !text) {
-                    if (!name) messengerNameInput.focus();
-                    else if (!text) messengerTextInput.focus();
+                if (!text) {
+                    messengerTextInput.focus();
                     return;
                 }
 
