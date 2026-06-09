@@ -1,0 +1,127 @@
+{
+  "hero": {
+    "title": "Securing Systems,\nMitigating Enterprise Risks\nwith Precision.",
+    "subtitle": "Hello, I'm Zidhan. A Cybersecurity Consultant & Penetration Tester. I perform in-depth vulnerability assessments, secure web infrastructures, and help organizations maintain robust defense postures.",
+    "status": "STATUS: AVAILABLE FOR CONSULTING",
+    "stats": [
+      {
+        "val": "15+",
+        "lbl": "Audits Completed"
+      },
+      {
+        "val": "100%",
+        "lbl": "Secure Disclosures"
+      },
+      {
+        "val": "3+",
+        "lbl": "Vulnerabilities Reported"
+      }
+    ]
+  },
+  "about": {
+    "lead": "I am a Cybersecurity Consultant based in Calicut, Kerala, specializing in offensive testing and vulnerability analysis.",
+    "bio1": "Transitioning into system systems and digital defense, I leveraged my deep interest in cybersecurity to pivot into real-world application security testing.",
+    "bio2": "To solidify my technical base, I completed a formal Ethical Hacking Diploma at the Avodha Institute in Calicut (October 2025 - April 2026), focusing on network defense systems, vulnerability analysis, and ethical hacking frameworks.",
+    "bio3": "Today, I work as an independent consultant and security researcher, assisting organizations in identifying architectural vulnerabilities and performing responsible disclosures to secure their sensitive databases.",
+    "timeline": [
+      {
+        "year": "2025",
+        "title": "Academic Foundation",
+        "text": "Completed preparatory studies and decided to pursue a career path in technical security defense systems."
+      },
+      {
+        "year": "Oct 2025 - Apr 2026",
+        "title": "Offensive Security Certification",
+        "text": "Graduated with a Diploma in Ethical Hacking from Avodha Institute, specialising in network scans and application auditing."
+      },
+      {
+        "year": "Apr 2026 - Present",
+        "title": "Independent Security Consulting",
+        "text": "Advising businesses on configuration setups, reporting major vulnerabilities, and executing responsible disclosures."
+      }
+    ]
+  },
+  "skills": [
+    {
+      "title": "Penetration Testing",
+      "text": "Conducting structured web application testing to identify exploits, authorization bypasses, and security logic flaws.",
+      "badges": ["OWASP Top 10", "API Security", "Auth Bypass"]
+    },
+    {
+      "title": "Vulnerability Assessment",
+      "text": "Leveraging automated utilities alongside manual inspection to identify system vulnerabilities and patch flaws.",
+      "badges": ["Nessus Scanning", "Nmap Auditing", "Threat Mitigation"]
+    },
+    {
+      "title": "Security Tooling",
+      "text": "Proficient with industry-standard frameworks to analyze network traffic and verify application defenses.",
+      "badges": ["Burp Suite", "Wireshark", "Metasploit", "Linux Systems"]
+    }
+  ],
+  "services": [
+    {
+      "title": "Web App Audits",
+      "text": "Comprehensive checks against common attack vectors like SQL injection, cross-site scripting, authentication flaws, and API leaks."
+    },
+    {
+      "title": "Vulnerability Assessment",
+      "text": "Detailed analysis of your infrastructure or website setup to detect configuration bugs, exposed paths, and software version leaks."
+    },
+    {
+      "title": "Responsible Disclosure Reporting",
+      "text": "Clear, highly detailed proof-of-concept (PoC) security reports containing step-by-step reproduction and critical fixing recommendations."
+    }
+  ],
+  "projects": [
+    {
+      "id": "django",
+      "tag": "CASE STUDY // SECURITY ASSESSMENT #01",
+      "title": "E-Commerce Platform Vulnerability Assessment",
+      "desc": "Conducted a non-intrusive security audit on an active e-commerce application. Responsibly reported multiple vulnerabilities to help secure client networks and safeguard active transaction databases.",
+      "tools": ["Django Audit", "Vulnerability Assessment", "Auth Security"],
+      "linkedin": "https://www.linkedin.com/in/muhammad-zidhan-508b98357",
+      "vulns": [
+        {
+          "severity": "CRITICAL",
+          "severityClass": "critical",
+          "name": "Django Debug Mode Enabled",
+          "details": "Exposed internal code structures, environment keys, technical settings, database queries, and raw local variables. Exposed system paths could easily facilitate server takeovers."
+        },
+        {
+          "severity": "HIGH",
+          "severityClass": "high",
+          "name": "No Rate Limiting on Admin Panel",
+          "details": "The administrative login portal was completely vulnerable to rapid automated login attempts (Brute Force attacks), making default password attacks highly effective."
+        },
+        {
+          "severity": "MEDIUM",
+          "severityClass": "medium",
+          "name": "Server Software Information Disclosure",
+          "details": "Server headers leaked exact software components and server versions, allowing malicious actors to target matching CVE vulnerabilities."
+        }
+      ]
+    },
+    {
+      "id": "clickjacking",
+      "tag": "CASE STUDY // SECURITY ASSESSMENT #02",
+      "title": "Storefront Application Clickjacking Security Audit",
+      "desc": "Identified and verified a clickjacking (UI redirection) flaw during security research labs on an active storefront web server. Verified the bypass and responsibly coordinated a patch submission with the client.",
+      "tools": ["Clickjacking Audit", "X-Frame-Options", "Content Security Policy"],
+      "linkedin": "https://www.linkedin.com/in/muhammad-zidhan-508b98357",
+      "vulns": [
+        {
+          "severity": "MEDIUM",
+          "severityClass": "medium",
+          "name": "Missing Frame Isolation Headers (Clickjacking)",
+          "details": "The web server failed to enforce defensive boundaries, completely lacking legacy X-Frame-Options and modern Content-Security-Policy (CSP) frame-ancestors tokens. This allowed the authentication page to load inside unauthorized external frames."
+        },
+        {
+          "severity": "LOW",
+          "severityClass": "low",
+          "name": "Proof of Concept Frame Pipeline",
+          "details": "Confirmed exposure by building a lightweight HTML frame wrapper that loads the user login fields inside a controlled, mock attacker-facing layer without triggering browser exceptions."
+        }
+      ]
+    }
+  ]
+}

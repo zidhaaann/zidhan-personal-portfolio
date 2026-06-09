@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZidhanSec | Admin Portal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-body">
+    <!-- Background glow effect -->
+    <div class="bg-gradient-glow"></div>
+
+    <div class="admin-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <span class="logo-brand">Zidhan</span><span class="logo-accent">Sec</span>
+                </a>
+                <span class="admin-badge">Admin Portal</span>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <button class="nav-tab-btn active" id="tab-inbox-btn">
+                    <svg class="nav-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <span>Inquiry Inbox</span>
+                    <span class="inbox-count" id="inbox-badge-count">0</span>
+                </button>
+                <button class="nav-tab-btn" id="tab-cms-btn">
+                    <svg class="nav-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                    <span>Content Manager (CMS)</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="index.html" class="btn btn-outline btn-sm btn-block">Back to Site</a>
+            </div>
+        </aside>
+
+        <!-- Main Workspace Area -->
+        <main class="admin-workspace">
+            
+            <!-- INBOX TAB VIEW -->
+            <section class="admin-tab-content active" id="tab-inbox">
+                <div class="tab-header-row">
+                    <div>
+                        <h2 class="workspace-title">Client Inquiry Inbox</h2>
+                        <p class="workspace-subtitle">Manage client scope calculations and contact form submissions.</p>
+                    </div>
+                    <button class="btn btn-outline btn-sm" id="btn-clear-inbox">Clear All</button>
+                </div>
+
+                <div class="inbox-dashboard-grid">
+                    <!-- Inbox Left Index List -->
+                    <div class="inbox-list-pane">
+                        <div class="list-search-wrap">
+                            <input type="text" id="inbox-search" placeholder="Filter by sender name or email...">
+                        </div>
+                        <div class="inbox-index-list" id="inbox-index-list">
+                            <!-- Populated dynamically -->
+                            <div class="inbox-empty-state">No inquiries received yet.</div>
+                        </div>
+                    </div>
+
+                    <!-- Inbox Right Details Reader -->
+                    <div class="inbox-reader-pane" id="inbox-reader-pane">
+                        <div class="reader-placeholder">
+                            <svg class="placeholder-mail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <p>Select an inquiry to read the details.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CMS EDITOR TAB VIEW -->
+            <section class="admin-tab-content" id="tab-cms">
+                <div class="tab-header-row">
+                    <div>
+                        <h2 class="workspace-title">Content Management System (CMS)</h2>
+                        <p class="workspace-subtitle">Dynamically edit your website texts, statistics, biography, and featured cards.</p>
+                    </div>
+                    <div style="display:flex; gap: 0.5rem;">
+                        <button class="btn btn-outline btn-sm" id="btn-export-config">Export config.json</button>
+                        <button class="btn btn-primary btn-sm" id="btn-save-cms">Save Changes</button>
+                    </div>
+                </div>
+
+                <div class="cms-editor-grid">
+                    <!-- CMS Left: Edit Forms -->
+                    <div class="cms-forms-pane">
+                        <form id="cms-editor-form">
+                            <!-- HERO SECTION EDITOR -->
+                            <div class="editor-section-card">
+                                <h3 class="editor-card-title">1. Hero Section Content</h3>
+                                <div class="form-group">
+                                    <label for="cms-hero-status">Status Badge Text</label>
+                                    <input type="text" id="cms-hero-status" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cms-hero-title">Main Headline (Use \n for line breaks)</label>
+                                    <textarea id="cms-hero-title" rows="2" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cms-hero-subtitle">Subtitle Paragraph</label>
+                                    <textarea id="cms-hero-subtitle" rows="3" required></textarea>
+                                </div>
+                            </div>
+
+                            <!-- STATS EDITOR -->
+                            <div class="editor-section-card">
+                                <h3 class="editor-card-title">2. Homepage Statistics</h3>
+                                <div class="stats-editor-grid">
+                                    <div class="stat-editor-row">
+                                        <h4>Stat 1</h4>
+                                        <input type="text" id="cms-stat-val-0" placeholder="Val (e.g. 15+)" required>
+                                        <input type="text" id="cms-stat-lbl-0" placeholder="Label" required>
+                                    </div>
+                                    <div class="stat-editor-row">
+                                        <h4>Stat 2</h4>
+                                        <input type="text" id="cms-stat-val-1" placeholder="Val (e.g. 100%)" required>
+                                        <input type="text" id="cms-stat-lbl-1" placeholder="Label" required>
+                                    </div>
+                                    <div class="stat-editor-row">
+                                        <h4>Stat 3</h4>
+                                        <input type="text" id="cms-stat-val-2" placeholder="Val (e.g. 3+)" required>
+                                        <input type="text" id="cms-stat-lbl-2" placeholder="Label" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ABOUT BIOGRAPHY EDITOR -->
+                            <div class="editor-section-card">
+                                <h3 class="editor-card-title">3. About Me Biography</h3>
+                                <div class="form-group">
+                                    <label for="cms-about-lead">Lead Statement (Bold text)</label>
+                                    <input type="text" id="cms-about-lead" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cms-about-bio1">Bio Paragraph 1</label>
+                                    <textarea id="cms-about-bio1" rows="3" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cms-about-bio2">Bio Paragraph 2</label>
+                                    <textarea id="cms-about-bio2" rows="3" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cms-about-bio3">Bio Paragraph 3</label>
+                                    <textarea id="cms-about-bio3" rows="3" required></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- CMS Right: Help & Deployment Instructions -->
+                    <div class="cms-help-pane">
+                        <div class="help-card">
+                            <h4>How to make updates permanent?</h4>
+                            <p>Modifying fields on this page and clicking **Save Changes** updates your browser's local view immediately so you can test it.</p>
+                            <p>To make the changes permanent for all public visitors on your live website, follow these steps:</p>
+                            <ol class="help-steps">
+                                <li>Modify the contents on this panel to your liking.</li>
+                                <li>Click the **Export config.json** button at the top-right.</li>
+                                <li>Save the downloaded `config.json` file inside your local folder, replacing the old `config.json`.</li>
+                                <li>Run a Git Commit and Push to your repository:
+                                    <pre class="code-pre">git add config.json
+git commit -m "Update website content"
+git push origin main</pre>
+                                </li>
+                            </ol>
+                            <div class="alert-info-box">
+                                <p><strong>Note:</strong> GitHub Pages may take 1-2 minutes to deploy the new file after you push.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- JS Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
