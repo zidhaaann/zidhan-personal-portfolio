@@ -271,4 +271,214 @@ Available commands:
         updateTimestamp();
         setInterval(updateTimestamp, 1000);
     }
+
+    // ----------------------------------------------------
+    // 7. Matrix Code Rain Animation
+    // ----------------------------------------------------
+    const canvas = document.getElementById('cyber-rain');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+        
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+        
+        const chars = '0101010101ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@$&%'.split('');
+        const fontSize = 14;
+        const columns = width / fontSize;
+        const drops = [];
+        
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.random() * -100;
+        }
+        
+        function drawRain() {
+            ctx.fillStyle = 'rgba(11, 15, 25, 0.05)';
+            ctx.fillRect(0, 0, width, height);
+            
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.35)';
+            ctx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                
+                if (Math.random() > 0.98) {
+                    ctx.fillStyle = '#f8fafc';
+                } else {
+                    ctx.fillStyle = 'rgba(56, 189, 248, 0.35)';
+                }
+                
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                
+                if (drops[i] * fontSize > height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        setInterval(drawRain, 35);
+    }
+
+    // ----------------------------------------------------
+    // 8. Hacker Text Scrambler Effect
+    // ----------------------------------------------------
+    const scrambleElements = document.querySelectorAll('.scramble-text');
+    const scrambleChars = '0123456789%@$#&?/\<>{}[]';
+
+    scrambleElements.forEach(element => {
+        let originalText = element.getAttribute('data-text') || element.innerText;
+        let isScrambling = false;
+
+        element.addEventListener('mouseenter', () => {
+            if (isScrambling) return;
+            isScrambling = true;
+            
+            let iteration = 0;
+            const interval = setInterval(() => {
+                let scrambled = '';
+                for (let i = 0; i < originalText.length; i++) {
+                    if (originalText[i] === ' ') {
+                        scrambled += ' ';
+                        continue;
+                    }
+                    if (i < iteration) {
+                        scrambled += originalText[i];
+                    } else {
+                        scrambled += scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+                    }
+                }
+                
+                const span = element.querySelector('.title-number');
+                if (span) {
+                    element.innerHTML = `<span class="title-number">${span.innerHTML}</span> ` + scrambled.replace(/^\d+\.\s*/, '');
+                } else {
+                    element.textContent = scrambled;
+                }
+
+                if (iteration >= originalText.length) {
+                    clearInterval(interval);
+                    if (span) {
+                        element.innerHTML = `<span class="title-number">${span.innerHTML}</span> ` + originalText.replace(/^\d+\.\s*/, '');
+                    } else {
+                        element.textContent = originalText;
+                    }
+                    isScrambling = false;
+                }
+                iteration += originalText.length / 15;
+            }, 50);
+        });
+    });
+
+    // ----------------------------------------------------
+    // 9. VAPT Lab Exploit Simulator
+    // ----------------------------------------------------
+    const modal = document.getElementById('vapt-modal');
+    const closeBtn = document.getElementById('modal-close-btn');
+    const runBtns = document.querySelectorAll('.run-simulation');
+    const modalBody = document.getElementById('modal-terminal-body');
+    const modalTitleText = document.getElementById('modal-title-text');
+    const modalStatusText = document.getElementById('modal-status-text');
+
+    const exploitPayloads = {
+        django: [
+            { text: "[!] INITIALIZING DJANGO DEBUG EXPLOIT PROTOCOL...", color: "cyan" },
+            { text: "[*] TARGET URL: http://ecommerce-storefront.local", color: "muted" },
+            { text: "[*] SENDING REQUEST WITH CUSTOM USER-AGENT...", color: "muted" },
+            { text: "[*] PARSING HTTP RESPONSE CONTEXT...", color: "muted" },
+            { text: "[!] VULNERABILITY DETECTED: django_settings_debug = True", color: "error" },
+            { text: "[*] TRIGGERING STACKTRACE VIA BAD METHOD INJECTION...", color: "muted" },
+            { text: "[!] SYSTEM VARIABLE DUMP IN PROGRESS...", color: "warn" },
+            { text: "--------------------------------------------------------", color: "muted" },
+            { text: "    SECRET_KEY = 'django-insecure-s#e!c!r!e!t!k!e!y!12345'", color: "success" },
+            { text: "    AWS_ACCESS_KEY_ID = 'AKIAIOSFODNN7EXAMPLE'", color: "success" },
+            { text: "    DB_PASSWORD = 'super_secure_client_pass_2026'", color: "success" },
+            { text: "    ALLOWED_HOSTS = ['*']", color: "muted" },
+            { text: "--------------------------------------------------------", color: "muted" },
+            { text: "[+] EXPLOIT VERIFIED: Local variables successfully leaked.", color: "success" },
+            { text: "[+] REPORTING STATUS: VAPT report generated successfully.", color: "success" },
+            { text: "[+] MITIGATION PROTOCOL: Set 'DEBUG = False' in settings.py.", color: "cyan" }
+        ],
+        clickjacking: [
+            { text: "[!] INITIALIZING CLICKJACKING EXPOSURE AUDIT...", color: "cyan" },
+            { text: "[*] TARGET URL: http://storefront.local/login", color: "muted" },
+            { text: "[*] EXAMINING PROXY BOUNDARIES & HTTP RESPONSE HEADER PACKETS...", color: "muted" },
+            { text: "[!] WARNING: X-Frame-Options header not found in payload.", color: "warn" },
+            { text: "[!] WARNING: Content-Security-Policy 'frame-ancestors' absent.", color: "warn" },
+            { text: "[!] SYSTEM VULNERABILITY CONFIRMED: Missing UI Isolation Boundaries.", color: "error" },
+            { text: "[*] DEPLOYING MOCK EXPLOIT WRAPPER...", color: "muted" },
+            { text: "[*] CREATING ATTACKER LAYER WITH OPACITY = 0.005...", color: "muted" },
+            { text: "[*] RENDERING store-login CONTAINER INSIDE IFRAME...", color: "muted" },
+            { text: "[!] ALIGNING UI INJECTION DIRECTIVES...", color: "muted" },
+            { text: "[+] FRAME BOUNDARY INTRUSION COMPLETED SUCCESSFULLY.", color: "success" },
+            { text: "[+] POC VALIDATION: Store credentials capture overlay deployed.", color: "success" },
+            { text: "[+] MITIGATION PROTOCOL: Configure web server to send X-Frame-Options: SAMEORIGIN.", color: "cyan" }
+        ]
+    };
+
+    if (modal && closeBtn) {
+        runBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const project = btn.getAttribute('data-project');
+                const payload = exploitPayloads[project];
+                
+                modal.classList.add('active');
+                modalStatusText.textContent = "RUNNING";
+                modalStatusText.style.color = "#f43f5e";
+                modalTitleText.textContent = `VAPT_EXPLOIT_LAB_SIMULATOR // POC_${project.toUpperCase()}`;
+                
+                modalBody.innerHTML = '';
+                
+                let step = 0;
+                function runStep() {
+                    if (step < payload.length) {
+                        const line = document.createElement('div');
+                        line.style.marginBottom = '0.4rem';
+                        
+                        const data = payload[step];
+                        if (data.color === "cyan") {
+                            line.style.color = "var(--color-primary)";
+                        } else if (data.color === "error") {
+                            line.style.color = "#f43f5e";
+                        } else if (data.color === "warn") {
+                            line.style.color = "#f97316";
+                        } else if (data.color === "success") {
+                            line.style.color = "#00ff66";
+                        } else {
+                            line.style.color = "var(--color-text-secondary)";
+                        }
+                        
+                        line.textContent = data.text;
+                        modalBody.appendChild(line);
+                        
+                        modalBody.scrollTop = modalBody.scrollHeight;
+                        step++;
+                        setTimeout(runStep, 600);
+                    } else {
+                        modalStatusText.textContent = "FINISHED";
+                        modalStatusText.style.color = "var(--color-primary)";
+                    }
+                }
+                
+                setTimeout(runStep, 200);
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            modalStatusText.textContent = "STANDBY";
+            modalStatusText.style.color = "var(--color-primary)";
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                modalStatusText.textContent = "STANDBY";
+                modalStatusText.style.color = "var(--color-primary)";
+            }
+        });
+    }
 });

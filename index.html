@@ -15,6 +15,7 @@
 <body>
     <!-- Background grid effect -->
     <div class="cyber-grid"></div>
+    <canvas id="cyber-rain"></canvas>
     <div class="scanlines"></div>
 
     <!-- Header Navigation -->
@@ -54,7 +55,7 @@
                         <span class="badge-ping"></span>
                         <span class="badge-text">STATUS: ACTIVE FOR DISCLOSURES</span>
                     </div>
-                    <h1 class="hero-title">
+                    <h1 class="hero-title scramble-text" data-text="Securing the Web, One Vulnerability at a Time.">
                         Securing the Web, <br>
                         <span class="text-gradient">One Vulnerability</span> <br>
                         at a Time.
@@ -119,7 +120,7 @@
         <section id="about" class="about-section section-padding border-top-glow">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title"><span class="title-number">01.</span> About Me</h2>
+                    <h2 class="section-title scramble-text" data-text="01. About Me"><span class="title-number">01.</span> About Me</h2>
                     <p class="section-desc">Who I am and how I stepped into the world of cyber security.</p>
                 </div>
                 <div class="about-grid">
@@ -169,7 +170,7 @@
         <section id="skills" class="skills-section section-padding border-top-glow bg-darker">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title"><span class="title-number">02.</span> Skills &amp; Expertise</h2>
+                    <h2 class="section-title scramble-text" data-text="02. Skills &amp; Expertise"><span class="title-number">02.</span> Skills &amp; Expertise</h2>
                     <p class="section-desc">My technical arsenal for finding bugs and securing assets.</p>
                 </div>
                 <div class="skills-grid">
@@ -264,7 +265,7 @@
         <section id="services" class="services-section section-padding border-top-glow">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title"><span class="title-number">03.</span> Services</h2>
+                    <h2 class="section-title scramble-text" data-text="03. Services"><span class="title-number">03.</span> Services</h2>
                     <p class="section-desc">Professional cybersecurity solutions I provide to clients.</p>
                 </div>
                 <div class="services-grid">
@@ -297,7 +298,7 @@
         <section id="projects" class="projects-section section-padding border-top-glow bg-darker">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title"><span class="title-number">04.</span> Projects &amp; Research</h2>
+                    <h2 class="section-title scramble-text" data-text="04. Projects &amp; Research"><span class="title-number">04.</span> Projects &amp; Research</h2>
                     <p class="section-desc">Independent research and vulnerabilities responsibly disclosed on live systems.</p>
                 </div>
 
@@ -350,10 +351,13 @@
                                 <span>Vulnerability Assessment</span>
                                 <span>Auth Security</span>
                             </div>
-                            <a href="https://www.linkedin.com/in/muhammad-zidhan-508b98357" target="_blank" rel="noopener noreferrer" class="project-link">
-                                <span>Verify on LinkedIn</span>
-                                <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                            </a>
+                            <div class="project-links-wrap">
+                                <button class="btn btn-primary btn-sm run-simulation" data-project="django">Run PoC Lab</button>
+                                <a href="https://www.linkedin.com/in/muhammad-zidhan-508b98357" target="_blank" rel="noopener noreferrer" class="project-link">
+                                    <span>LinkedIn</span>
+                                    <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -395,10 +399,13 @@
                                 <span>X-Frame-Options</span>
                                 <span>Content Security Policy</span>
                             </div>
-                            <a href="https://www.linkedin.com/in/muhammad-zidhan-508b98357" target="_blank" rel="noopener noreferrer" class="project-link">
-                                <span>Verify on LinkedIn</span>
-                                <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                            </a>
+                            <div class="project-links-wrap">
+                                <button class="btn btn-primary btn-sm run-simulation" data-project="clickjacking">Run PoC Lab</button>
+                                <a href="https://www.linkedin.com/in/muhammad-zidhan-508b98357" target="_blank" rel="noopener noreferrer" class="project-link">
+                                    <span>LinkedIn</span>
+                                    <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -539,6 +546,24 @@
             </div>
         </div>
     </footer>
+
+    <!-- VAPT Simulator Modal -->
+    <div id="vapt-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="terminal-buttons">
+                    <span class="term-btn red close-modal" id="modal-close-btn"></span>
+                    <span class="term-btn yellow"></span>
+                    <span class="term-btn green"></span>
+                </div>
+                <div class="modal-title" id="modal-title-text">VAPT_EXPLOIT_LAB_SIMULATOR v1.0</div>
+                <div class="modal-status" id="modal-status-text">STANDBY</div>
+            </div>
+            <div class="modal-body" id="modal-terminal-body">
+                <!-- Exploit steps are dynamically printed here -->
+            </div>
+        </div>
+    </div>
 
     <!-- JS Scripts -->
     <script src="app.js"></script>
