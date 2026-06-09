@@ -68,140 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ----------------------------------------------------
-    // 4. Interactive Terminal Console Simulator
-    // ----------------------------------------------------
-    const terminalInput = document.getElementById('terminal-input');
-    const terminalOutput = document.getElementById('terminal-output');
-    const terminalBody = document.getElementById('terminal-body');
-
-    // Commands dictionary
-    const commands = {
-        help: () => {
-            return `
-Available commands:
-  <span class="text-accent">about</span>       Display biographical profile.
-  <span class="text-accent">skills</span>      List operational skills & tooling.
-  <span class="text-accent">services</span>    Show provided cybersecurity audits.
-  <span class="text-accent">projects</span>    Details of security disclosures & research.
-  <span class="text-accent">vulns</span>       Review discovered e-commerce vulnerabilities.
-  <span class="text-accent">contact</span>     Get secure communication endpoints.
-  <span class="text-accent">clear</span>       Purge terminal output history.
-  <span class="text-accent">help</span>        Print this help menu.
-            `;
-        },
-        about: () => {
-            return `
-[PROFILE REPORT - ZIDHAN]
-- Age: 19 Years Old
-- Base: Calicut, Kerala, India
-- Education: CA Commerce Grad (2025) // Ethical Hacking Diploma (Oct 2025 - Apr 2026)
-- Focus: Cyber Security Researcher & Penetration Tester.
-- Description: Made the leap from commerce to tech to pursue a deep curiosity in cybersecurity. Attended Avodha Institute, Calicut. Specialized in ethical hacking, network analysis, and securing public web systems.
-            `;
-        },
-        skills: () => {
-            return `
-[OPERATIONAL CAPABILITIES]
-- Tools: Burp Suite, Nmap, Wireshark, Metasploit, Linux Terminal, Netcat, Nessus.
-- Focus Areas: Web Application Auditing, Vulnerability Assessment, Network Traffic Analysis.
-- Methodologies: OWASP Top 10 Audits, Responsible Disclosures, Security Reporting.
-            `;
-        },
-        services: () => {
-            return `
-[CYBERSECURITY SERVICES]
-- Web App Audits: Identification of authorization bypass, XSS, SQLi, and configuration flaws.
-- Vulnerability Scanning: Host discovery, service detection, and system exposure audits.
-- Disclosure Documentation: Formulating PoC reports with reproduction steps & mitigation advice.
-            `;
-        },
-        projects: () => {
-            return `
-[COMPLETED AUDITS & PROJECTS]
-1. E-Commerce Platform Vulnerability Assessment (Responsible Disclosure)
-   - Scope: Audited active e-commerce application for security flaws.
-   - Identified: Django Debug Mode Enabled, Lack of Rate Limiting, Server Info Leaks.
-   - Outcome: Responsibly disclosed findings. Client secured database & satisfied.
-2. Storefront Clickjacking Vulnerability (Responsible Disclosure)
-   - Scope: Inspected HTTP server boundary defenses on live system.
-   - Identified: Missing X-Frame-Options & CSP frame-ancestors directives.
-   - Outcome: Confirmed bypass via lightweight HTML container. Disclosed for patch.
-3. Port Scanner & Banner Grabber (Python script)
-   - Scans system ports and grabs running service banners.
-            `;
-        },
-        vulns: () => {
-            return `
-[VULNERABILITIES DISCLOSED]
-- <span class="text-success">[CRITICAL]</span> Django Debug Mode Enabled:
-  Allowed exposure of technical config settings, database models, system paths, and raw variables.
-- <span class="text-success">[HIGH]</span> Missing Rate Limiting on Admin Portal:
-  Administrative login portal susceptible to brute-force attacks.
-- <span class="text-success">[MEDIUM]</span> Clickjacking UI Redirection:
-  Missing frame security headers allowed storefront injection in third-party iframe overlays.
-- <span class="text-success">[MEDIUM]</span> Server Info Leakage:
-  Headers revealed underlying software component models and version numbers.
-            `;
-        },
-        contact: () => {
-            return `
-[SECURE CHANNELS]
-- Primary Email: <a href="mailto:zidhaninfo.sec@gmail.com" class="text-accent">zidhaninfo.sec@gmail.com</a>
-- LinkedIn: <a href="https://www.linkedin.com/in/muhammad-zidhan-508b98357" target="_blank" class="text-accent">linkedin.com/in/muhammad-zidhan-508b98357</a>
-- Location: Calicut, Kerala, India
-            `;
-        },
-        clear: () => {
-            terminalOutput.innerHTML = '';
-            return null;
-        }
-    };
-
-    if (terminalInput) {
-        // Automatically focus terminal input on click inside terminal body
-        terminalBody.addEventListener('click', () => {
-            terminalInput.focus();
-        });
-
-        terminalInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                const rawInput = terminalInput.value;
-                const cmd = rawInput.trim().toLowerCase();
-                
-                // Add command line to history
-                const cmdLine = document.createElement('div');
-                cmdLine.className = 'terminal-line';
-                cmdLine.innerHTML = `<span class="terminal-prompt">guest@zidhan-sec:~$</span> <span>${rawInput}</span>`;
-                terminalOutput.appendChild(cmdLine);
-
-                // Execute command
-                if (cmd !== '') {
-                    const outputLine = document.createElement('div');
-                    outputLine.className = 'terminal-line';
-                    
-                    if (commands[cmd]) {
-                        const result = commands[cmd]();
-                        if (result !== null) {
-                            outputLine.innerHTML = result.trim().replace(/\n/g, '<br>');
-                            terminalOutput.appendChild(outputLine);
-                        }
-                    } else {
-                        outputLine.innerHTML = `sh: command not found: <span class="text-success">${cmd}</span>. Type <span class="text-accent">'help'</span> for operations list.`;
-                        terminalOutput.appendChild(outputLine);
-                    }
-                }
-
-                // Reset input
-                terminalInput.value = '';
-                
-                // Auto-scroll terminal body
-                terminalBody.scrollTop = terminalBody.scrollHeight;
-            }
-        });
-    }
-
-    // ----------------------------------------------------
-    // 5. Contact Form Cryptographic Simulation
+    // 4. Contact Form Submission Dispatcher
     // ----------------------------------------------------
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
@@ -220,20 +87,20 @@ Available commands:
             const subject = document.getElementById('form-subject').value;
             const message = document.getElementById('form-message').value;
 
-            // Step 1: Encrypting simulation
+            // Secure connection simulation
             formStatus.className = 'form-status sending';
             formStatus.innerHTML = '[System] Initializing secure socket connection...';
 
             setTimeout(() => {
-                formStatus.innerHTML = '[System] Encrypting connection payload with RSA-4096...';
+                formStatus.innerHTML = '[System] Encrypting connection payload with TLS 1.3...';
                 
                 setTimeout(() => {
-                    formStatus.innerHTML = '[System] Handshake completed. Broadcasting packet stream...';
+                    formStatus.innerHTML = '[System] Transmitting message payload...';
                     
                     setTimeout(() => {
                         // Success Feedback
                         formStatus.className = 'form-status success';
-                        formStatus.innerHTML = `[SUCCESS] Secure packet broadcasted successfully! Connection request authorized for ${name}.`;
+                        formStatus.innerHTML = `[SUCCESS] Message dispatched successfully. Thank you for your inquiry, ${name}.`;
                         
                         // Clear form input fields
                         contactForm.reset();
@@ -253,41 +120,21 @@ Available commands:
     }
 
     // ----------------------------------------------------
-    // 6. Dynamic System Timestamps
-    // ----------------------------------------------------
-    const sysTimestamp = document.getElementById('sys-timestamp');
-    if (sysTimestamp) {
-        const updateTimestamp = () => {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            
-            sysTimestamp.textContent = `${year}-${month}-${day} ${hours}:${minutes}:${seconds} UTC`;
-        };
-        updateTimestamp();
-        setInterval(updateTimestamp, 1000);
-    }
-
-    // ----------------------------------------------------
-    // 7. Standard System Dashboard Logging
+    // 5. Standard System Dashboard Logging
     // ----------------------------------------------------
     const dashboardLog = document.getElementById('dashboard-feed-log');
     const dashboardStatusBadge = document.querySelector('.dashboard-badge');
     
     const sysLogs = [
-        "Network integrity audit: 100% operational.",
-        "Static code analysis completed. 0 vulnerability flags.",
-        "Checked active configurations: X-Frame-Options is SAMEORIGIN.",
+        "Securing network endpoints: 100% operational.",
+        "Static code analysis completed. 0 high severity flags.",
+        "Checked SSL configurations: Cipher suites verified.",
         "Checked Content-Security-Policy: frame-ancestors verified.",
-        "HTTPS connection active. TLS 1.3 handshake verified.",
-        "Vulnerability assessment database updated.",
-        "Security audit completed for Client #2. Status: Patched.",
-        "Monitoring subnets for suspicious traffic... OK.",
-        "IDS check: All firewall rules verified."
+        "Active connections monitoring: No anomalies detected.",
+        "Threat exposure index updated.",
+        "Security audit completed for Client #15. Status: Closed.",
+        "Vulnerability assessment database synced.",
+        "System logs audit: All audit rules compliant."
     ];
 
     if (dashboardLog) {
@@ -311,14 +158,14 @@ Available commands:
             if (dashboardStatusBadge) {
                 if (Math.random() > 0.8) {
                     dashboardStatusBadge.textContent = "SCANNING";
-                    dashboardStatusBadge.style.color = "var(--color-secondary)";
+                    dashboardStatusBadge.style.color = "var(--color-primary-light)";
                     dashboardStatusBadge.style.borderColor = "rgba(99, 102, 241, 0.3)";
                     dashboardStatusBadge.style.backgroundColor = "rgba(99, 102, 241, 0.05)";
                     
                     setTimeout(() => {
                         dashboardStatusBadge.textContent = "STANDBY";
                         dashboardStatusBadge.style.color = "var(--color-accent)";
-                        dashboardStatusBadge.style.borderColor = "rgba(16, 185, 129, 0.3)";
+                        dashboardStatusBadge.style.borderColor = "rgba(16, 185, 129, 0.25)";
                         dashboardStatusBadge.style.backgroundColor = "rgba(16, 185, 129, 0.05)";
                     }, 2000);
                 }
@@ -327,57 +174,7 @@ Available commands:
     }
 
     // ----------------------------------------------------
-    // 8. Hacker Text Scrambler Effect
-    // ----------------------------------------------------
-    const scrambleElements = document.querySelectorAll('.scramble-text');
-    const scrambleChars = '0123456789%@$#&?/\<>{}[]';
-
-    scrambleElements.forEach(element => {
-        let originalText = element.getAttribute('data-text') || element.innerText;
-        let isScrambling = false;
-
-        element.addEventListener('mouseenter', () => {
-            if (isScrambling) return;
-            isScrambling = true;
-            
-            let iteration = 0;
-            const interval = setInterval(() => {
-                let scrambled = '';
-                for (let i = 0; i < originalText.length; i++) {
-                    if (originalText[i] === ' ') {
-                        scrambled += ' ';
-                        continue;
-                    }
-                    if (i < iteration) {
-                        scrambled += originalText[i];
-                    } else {
-                        scrambled += scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
-                    }
-                }
-                
-                const span = element.querySelector('.title-number');
-                if (span) {
-                    element.innerHTML = `<span class="title-number">${span.innerHTML}</span> ` + scrambled.replace(/^\d+\.\s*/, '');
-                } else {
-                    element.textContent = scrambled;
-                }
-
-                if (iteration >= originalText.length) {
-                    clearInterval(interval);
-                    if (span) {
-                        element.innerHTML = `<span class="title-number">${span.innerHTML}</span> ` + originalText.replace(/^\d+\.\s*/, '');
-                    } else {
-                        element.textContent = originalText;
-                    }
-                    isScrambling = false;
-                }
-                iteration += originalText.length / 15;
-            }, 50);
-        });
-    });
-
-    // ----------------------------------------------------
-    // 9. VAPT Lab Exploit Simulator
+    // 6. Security Incident Simulation Lab
     // ----------------------------------------------------
     const modal = document.getElementById('vapt-modal');
     const closeBtn = document.getElementById('modal-close-btn');
@@ -388,37 +185,34 @@ Available commands:
 
     const exploitPayloads = {
         django: [
-            { text: "[!] INITIALIZING DJANGO DEBUG EXPLOIT PROTOCOL...", color: "cyan" },
-            { text: "[*] TARGET URL: http://ecommerce-storefront.local", color: "muted" },
-            { text: "[*] SENDING REQUEST WITH CUSTOM USER-AGENT...", color: "muted" },
-            { text: "[*] PARSING HTTP RESPONSE CONTEXT...", color: "muted" },
-            { text: "[!] VULNERABILITY DETECTED: django_settings_debug = True", color: "error" },
-            { text: "[*] TRIGGERING STACKTRACE VIA BAD METHOD INJECTION...", color: "muted" },
-            { text: "[!] SYSTEM VARIABLE DUMP IN PROGRESS...", color: "warn" },
+            { text: "[!] INITIATING SECURE COMPLIANCE AUDIT...", color: "cyan" },
+            { text: "[*] TARGET URL: https://enterprise-storefront.com", color: "muted" },
+            { text: "[*] ANALYZING HTTP RESPONSE HEADERS...", color: "muted" },
+            { text: "[*] PARSING DJANGO APPLICATION SETTINGS...", color: "muted" },
+            { text: "[!] RISK IDENTIFIED: django_settings_debug = True", color: "error" },
+            { text: "[*] TESTING ACCESS CONTROLS...", color: "muted" },
+            { text: "[!] ADVISORY: System settings and configuration variables exposed.", color: "warn" },
             { text: "--------------------------------------------------------", color: "muted" },
             { text: "    SECRET_KEY = 'django-insecure-s#e!c!r!e!t!k!e!y!12345'", color: "success" },
             { text: "    AWS_ACCESS_KEY_ID = 'AKIAIOSFODNN7EXAMPLE'", color: "success" },
             { text: "    DB_PASSWORD = 'super_secure_client_pass_2026'", color: "success" },
             { text: "    ALLOWED_HOSTS = ['*']", color: "muted" },
             { text: "--------------------------------------------------------", color: "muted" },
-            { text: "[+] EXPLOIT VERIFIED: Local variables successfully leaked.", color: "success" },
-            { text: "[+] REPORTING STATUS: VAPT report generated successfully.", color: "success" },
-            { text: "[+] MITIGATION PROTOCOL: Set 'DEBUG = False' in settings.py.", color: "cyan" }
+            { text: "[+] RISK CONFIRMED: Stack configuration details are readable.", color: "success" },
+            { text: "[+] COMPLIANCE AUDIT: Vulnerability report compiled.", color: "success" },
+            { text: "[+] MITIGATION STRATEGY: Define 'DEBUG = False' in production settings.", color: "cyan" }
         ],
         clickjacking: [
-            { text: "[!] INITIALIZING CLICKJACKING EXPOSURE AUDIT...", color: "cyan" },
-            { text: "[*] TARGET URL: http://storefront.local/login", color: "muted" },
-            { text: "[*] EXAMINING PROXY BOUNDARIES & HTTP RESPONSE HEADER PACKETS...", color: "muted" },
-            { text: "[!] WARNING: X-Frame-Options header not found in payload.", color: "warn" },
-            { text: "[!] WARNING: Content-Security-Policy 'frame-ancestors' absent.", color: "warn" },
-            { text: "[!] SYSTEM VULNERABILITY CONFIRMED: Missing UI Isolation Boundaries.", color: "error" },
-            { text: "[*] DEPLOYING MOCK EXPLOIT WRAPPER...", color: "muted" },
-            { text: "[*] CREATING ATTACKER LAYER WITH OPACITY = 0.005...", color: "muted" },
-            { text: "[*] RENDERING store-login CONTAINER INSIDE IFRAME...", color: "muted" },
-            { text: "[!] ALIGNING UI INJECTION DIRECTIVES...", color: "muted" },
-            { text: "[+] FRAME BOUNDARY INTRUSION COMPLETED SUCCESSFULLY.", color: "success" },
-            { text: "[+] POC VALIDATION: Store credentials capture overlay deployed.", color: "success" },
-            { text: "[+] MITIGATION PROTOCOL: Configure web server to send X-Frame-Options: SAMEORIGIN.", color: "cyan" }
+            { text: "[!] INITIATING CLICKJACKING COMPLIANCE AUDIT...", color: "cyan" },
+            { text: "[*] TARGET URL: https://enterprise-storefront.com/login", color: "muted" },
+            { text: "[*] ANALYZING RESPONSE HEADERS FOR ISOLATION DIRECTIVES...", color: "muted" },
+            { text: "[!] RISK IDENTIFIED: X-Frame-Options header not found in payload.", color: "warn" },
+            { text: "[!] RISK IDENTIFIED: Content-Security-Policy 'frame-ancestors' absent.", color: "warn" },
+            { text: "[!] COMPLIANCE FAILURE: Missing UI isolation boundaries.", color: "error" },
+            { text: "[*] VERIFYING UI INTRUSIONS...", color: "muted" },
+            { text: "[*] GENERATING PROOF-OF-CONCEPT CONTAINER...", color: "muted" },
+            { text: "[+] AUDIT RESULTS: Storefront page successfully embedded in cross-origin frame.", color: "success" },
+            { text: "[+] MITIGATION STRATEGY: Enforce X-Frame-Options: SAMEORIGIN header.", color: "cyan" }
         ]
     };
 
@@ -430,8 +224,8 @@ Available commands:
                 
                 modal.classList.add('active');
                 modalStatusText.textContent = "RUNNING";
-                modalStatusText.style.color = "#f43f5e";
-                modalTitleText.textContent = `VAPT_EXPLOIT_LAB_SIMULATOR // POC_${project.toUpperCase()}`;
+                modalStatusText.style.color = "#ef4444";
+                modalTitleText.textContent = `Audit Simulation Lab // POC_${project.toUpperCase()}`;
                 
                 modalBody.innerHTML = '';
                 
@@ -443,13 +237,13 @@ Available commands:
                         
                         const data = payload[step];
                         if (data.color === "cyan") {
-                            line.style.color = "var(--color-primary)";
+                            line.style.color = "var(--color-primary-light)";
                         } else if (data.color === "error") {
-                            line.style.color = "#f43f5e";
+                            line.style.color = "#ef4444";
                         } else if (data.color === "warn") {
                             line.style.color = "#f97316";
                         } else if (data.color === "success") {
-                            line.style.color = "#00ff66";
+                            line.style.color = "var(--color-accent)";
                         } else {
                             line.style.color = "var(--color-text-secondary)";
                         }
@@ -461,8 +255,8 @@ Available commands:
                         step++;
                         setTimeout(runStep, 600);
                     } else {
-                        modalStatusText.textContent = "FINISHED";
-                        modalStatusText.style.color = "var(--color-primary)";
+                        modalStatusText.textContent = "COMPLETED";
+                        modalStatusText.style.color = "var(--color-accent)";
                     }
                 }
                 
@@ -472,21 +266,21 @@ Available commands:
 
         closeBtn.addEventListener('click', () => {
             modal.classList.remove('active');
-            modalStatusText.textContent = "STANDBY";
-            modalStatusText.style.color = "var(--color-primary)";
+            modalStatusText.textContent = "READY";
+            modalStatusText.style.color = "var(--color-accent)";
         });
 
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 modal.classList.remove('active');
-                modalStatusText.textContent = "STANDBY";
-                modalStatusText.style.color = "var(--color-primary)";
+                modalStatusText.textContent = "READY";
+                modalStatusText.style.color = "var(--color-accent)";
             }
         });
     }
 
     // ----------------------------------------------------
-    // 10. Interactive Scope Calculator Portal
+    // 7. Interactive Scope Calculator Portal
     // ----------------------------------------------------
     const scoperSlider = document.getElementById('scoping-assets-slider');
     const scoperTargets = document.getElementsByName('audit-target');
@@ -544,7 +338,7 @@ Available commands:
             const finalDays = Math.ceil(baseDays + (assetsScale * 0.4));
             durationDisplay.textContent = `${finalDays} Days`;
 
-            // Cost calculation (Free/Freelance placeholder for student/freelancer)
+            // Cost calculation (Free/Custom Quote)
             costDisplay.textContent = "Free Pilot / Custom Quote";
         }
 
@@ -592,7 +386,7 @@ Available commands:
                         
                         // Alert feedback
                         const originalBtnText = applyScopeBtn.innerHTML;
-                        applyScopeBtn.innerHTML = "<span>Scope Applied to Form!</span>";
+                        applyScopeBtn.innerHTML = "<span>Scope Applied!</span>";
                         setTimeout(() => {
                             applyScopeBtn.innerHTML = originalBtnText;
                         }, 2500);
@@ -603,7 +397,7 @@ Available commands:
     }
 
     // ----------------------------------------------------
-    // 11. Client Floating Messenger Logic
+    // 8. Client Floating Messenger Logic
     // ----------------------------------------------------
     const messengerLauncher = document.getElementById('messenger-launcher');
     const messengerPanel = document.getElementById('messenger-panel');
@@ -683,8 +477,7 @@ Available commands:
                     const formattedMessage = `Hello Zidhan,\n\nMy name is ${name}.\n\nMessage Payload:\n${text}\n\n[Sent via Secure Portfolio Widget]`;
                     const escapedBody = encodeURIComponent(formattedMessage);
                     
-                    // WhatsApp URL (replace 919999999999 with the real number if needed)
-                    // We'll use 919999999999 as standard placeholder
+                    // WhatsApp URL
                     const waNumber = "919999999999"; 
                     transWhatsappBtn.href = `https://api.whatsapp.com/send?phone=${waNumber}&text=${escapedBody}`;
                     
