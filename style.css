@@ -1,27 +1,27 @@
-/* Custom CSS Variables - Cyber Obsidian Theme */
+/* Custom CSS Variables - Steel Blue & Slate Theme */
 :root {
-    --bg-base: #06070a;
-    --bg-surface: #0c0e15;
-    --bg-card: #111420;
-    --bg-darker: #040507;
+    --bg-base: #0b0f19; /* Deep Slate Navy */
+    --bg-surface: #131b2e; /* Slate Blue Surface */
+    --bg-card: #1e293b; /* Slate-800 Card */
+    --bg-darker: #070a12; /* Darker Slate */
     
-    --color-primary: #00ff66; /* Neon Emerald */
-    --color-primary-rgb: 0, 255, 102;
+    --color-primary: #38bdf8; /* Steel Blue (Sky-400) */
+    --color-primary-rgb: 56, 189, 248;
     --color-secondary: #00f0ff; /* Cyber Cyan */
     --color-secondary-rgb: 0, 240, 255;
-    --color-accent: #8b5cf6; /* Cyberpunk Violet */
+    --color-accent: #6366f1; /* Indigo Accent */
     
-    --color-text-primary: #e2e8f0;
-    --color-text-secondary: #94a3b8;
-    --color-text-muted: #64748b;
+    --color-text-primary: #f8fafc; /* Crisp Slate-50 */
+    --color-text-secondary: #94a3b8; /* Slate-400 */
+    --color-text-muted: #64748b; /* Slate-500 */
     --color-border: rgba(255, 255, 255, 0.08);
-    --color-border-glow: rgba(0, 255, 102, 0.15);
+    --color-border-glow: rgba(56, 189, 248, 0.2);
 
     /* Severity Colors */
-    --sev-critical: #ff3366;
-    --sev-high: #ff9933;
-    --sev-medium: #ffcc00;
-    --sev-low: #33ccff;
+    --sev-critical: #f43f5e; /* Rose-500 */
+    --sev-high: #f97316; /* Orange-500 */
+    --sev-medium: #eab308; /* Yellow-500 */
+    --sev-low: #38bdf8; /* Sky-400 */
     
     /* Fonts */
     --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -61,8 +61,8 @@ body {
     width: 100%;
     height: 100%;
     background-image: 
-        linear-gradient(rgba(0, 255, 102, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 102, 0.02) 1px, transparent 1px);
+        linear-gradient(rgba(56, 189, 248, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.02) 1px, transparent 1px);
     background-size: 40px 40px;
     background-position: center center;
     z-index: -2;
@@ -94,11 +94,11 @@ body {
     background: var(--bg-base);
 }
 ::-webkit-scrollbar-thumb {
-    background: rgba(0, 255, 102, 0.2);
+    background: rgba(56, 189, 248, 0.25);
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 255, 102, 0.4);
+    background: rgba(56, 189, 248, 0.45);
 }
 
 /* Helper Utilities */
@@ -162,14 +162,14 @@ body {
 
 .btn-primary {
     background-color: var(--color-primary);
-    color: var(--bg-base);
+    color: var(--bg-darker);
     border: 1px solid var(--color-primary);
-    box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
 }
 .btn-primary:hover {
     background-color: transparent;
     color: var(--color-primary);
-    box-shadow: 0 0 25px rgba(0, 255, 102, 0.4);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.45);
 }
 
 .btn-outline {
@@ -309,8 +309,8 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background-color: rgba(0, 255, 102, 0.05);
-    border: 1px solid rgba(0, 255, 102, 0.15);
+    background-color: rgba(56, 189, 248, 0.05);
+    border: 1px solid rgba(56, 189, 248, 0.15);
     padding: 0.35rem 0.85rem;
     border-radius: 20px;
     margin-bottom: 1.5rem;
@@ -605,15 +605,15 @@ body {
 .skill-card:hover {
     transform: translateY(-5px);
     border-color: var(--color-primary);
-    box-shadow: 0 10px 25px rgba(0, 255, 102, 0.05);
+    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.05);
 }
 
 .skill-icon-wrap {
     width: 44px;
     height: 44px;
     border-radius: 6px;
-    background-color: rgba(0, 255, 102, 0.04);
-    border: 1px solid rgba(0, 255, 102, 0.15);
+    background-color: rgba(56, 189, 248, 0.04);
+    border: 1px solid rgba(56, 189, 248, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1023,8 +1023,8 @@ body {
     width: 44px;
     height: 44px;
     border-radius: 6px;
-    background-color: rgba(0, 255, 102, 0.04);
-    border: 1px solid rgba(0, 255, 102, 0.15);
+    background-color: rgba(56, 189, 248, 0.04);
+    border: 1px solid rgba(56, 189, 248, 0.15);
     color: var(--color-primary);
     display: flex;
     align-items: center;
@@ -1070,7 +1070,7 @@ a.detail-value:hover {
 .social-links a:hover {
     color: var(--color-primary);
     border-color: var(--color-primary);
-    box-shadow: 0 0 10px rgba(0,255,102,0.2);
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
 }
 .social-icon {
     width: 18px;
@@ -1116,7 +1116,7 @@ a.detail-value:hover {
 }
 .form-group input:focus, .form-group textarea:focus {
     border-color: var(--color-primary);
-    box-shadow: 0 0 10px rgba(0, 255, 102, 0.15);
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.15);
 }
 
 .form-status {
@@ -1200,15 +1200,15 @@ a.detail-value:hover {
 @keyframes pulse {
     0% {
         transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.4);
+        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4);
     }
     70% {
         transform: scale(1);
-        box-shadow: 0 0 0 8px rgba(0, 255, 102, 0);
+        box-shadow: 0 0 0 8px rgba(56, 189, 248, 0);
     }
     100% {
         transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(0, 255, 102, 0);
+        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
     }
 }
 
