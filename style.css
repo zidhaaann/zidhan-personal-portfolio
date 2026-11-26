@@ -2194,3 +2194,75 @@ a.detail-value:hover {
     }
 }
 
+/* ===================== ADMIN LOGIN OVERLAY ===================== */
+.admin-login-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.12) 0%, transparent 70%),
+                var(--bg-dark, #0a0a0f);
+    backdrop-filter: blur(4px);
+}
+
+.admin-login-card {
+    background: rgba(15, 15, 25, 0.95);
+    border: 1px solid rgba(99,102,241,0.25);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 60px rgba(99,102,241,0.12), 0 24px 60px rgba(0,0,0,0.5);
+    animation: loginFadeIn 0.4s ease;
+}
+
+@keyframes loginFadeIn {
+    from { opacity: 0; transform: translateY(24px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+.login-logo {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 1.2rem;
+    font-family: var(--font-primary, 'Inter', sans-serif);
+}
+
+.login-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-text, #f0f0f0);
+    margin: 0 0 0.3rem 0;
+}
+
+.login-subtitle {
+    font-size: 0.82rem;
+    color: var(--color-text-muted, #888);
+    margin: 0 0 1.8rem 0;
+}
+
+.login-error {
+    background: rgba(255, 80, 80, 0.1);
+    border: 1px solid rgba(255, 80, 80, 0.3);
+    color: #ff6b6b;
+    border-radius: 8px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.82rem;
+    margin-bottom: 1rem;
+}
+
+.login-error.hidden {
+    display: none;
+}
+
+.btn-block {
+    width: 100%;
+    justify-content: center;
+}
+/* ============================================================= */
+
